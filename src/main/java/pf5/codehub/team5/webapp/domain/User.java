@@ -53,10 +53,11 @@ public class User {
     @Column(name = "city", length = MAX_NAME_LENGTH)
     private String city;
      */
-
+    @Enumerated(EnumType.STRING)
     @Column(name = "property_type")
     private List<PropertyType> propertyTypes;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "user_type")
     private Set<UserType> userTypes;
 
