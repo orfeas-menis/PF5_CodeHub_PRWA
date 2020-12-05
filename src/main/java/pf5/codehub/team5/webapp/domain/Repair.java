@@ -5,7 +5,7 @@ import pf5.codehub.team5.webapp.enums.Status;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Set;
+
 
 @Entity
 @Table(name = "REPAIR")
@@ -44,7 +44,7 @@ public class Repair {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "category")
-    private Set<Category> categories;
+    private Category category;
 
     @Column(name = "cost")
     private double cost;
@@ -53,7 +53,8 @@ public class Repair {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Repair(String street, String streetNumber, String postalCode, String city, Date dateTime, String description, Status status, Set<Category> categories, double cost, User user) {
+    public Repair(Long id, String street, String streetNumber, String postalCode, String city, Date dateTime, String description, Status status, Category category, double cost, User user) {
+        this.id = id;
         this.street = street;
         this.streetNumber = streetNumber;
         this.postalCode = postalCode;
@@ -61,101 +62,96 @@ public class Repair {
         this.dateTime = dateTime;
         this.description = description;
         this.status = status;
-        this.categories = categories;
+        this.category = category;
         this.cost = cost;
         this.user = user;
-    }
-
-    public Repair() {
-        this.status = Status.PENDIND;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getStreet() {
-        return street;
-    }
-
-    public String getStreetNumber() {
-        return streetNumber;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public Date getDateTime() {
-        return dateTime;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public Set<Category> getCategories() {
-        return categories;
-    }
-
-    public double getCost() {
-        return cost;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getStreet() {
+        return street;
     }
 
     public void setStreet(String street) {
         this.street = street;
     }
 
+    public String getStreetNumber() {
+        return streetNumber;
+    }
+
     public void setStreetNumber(String streetNumber) {
         this.streetNumber = streetNumber;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
     }
 
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
 
+    public String getCity() {
+        return city;
+    }
+
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public Date getDateTime() {
+        return dateTime;
     }
 
     public void setDateTime(Date dateTime) {
         this.dateTime = dateTime;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Status getStatus() {
+        return status;
     }
 
     public void setStatus(Status status) {
         this.status = status;
     }
 
-    public void setCategories(Set<Category> categories) {
-        this.categories = categories;
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public double getCost() {
+        return cost;
     }
 
     public void setCost(double cost) {
         this.cost = cost;
     }
 
+    public User getUser() {
+        return user;
+    }
+
     public void setUser(User user) {
         this.user = user;
     }
-
 }

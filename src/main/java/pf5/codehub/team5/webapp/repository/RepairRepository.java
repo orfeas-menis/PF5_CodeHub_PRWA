@@ -1,4 +1,9 @@
 package pf5.codehub.team5.webapp.repository;
 
-public interface RepairRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import pf5.codehub.team5.webapp.domain.Repair;
+
+@Repository
+public interface RepairRepository extends JpaRepository<Repair, Long> {
 }

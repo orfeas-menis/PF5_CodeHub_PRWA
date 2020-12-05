@@ -1,15 +1,16 @@
 package pf5.codehub.team5.webapp.domain;
 
 
-import org.hibernate.usertype.UserType;
+
 import pf5.codehub.team5.webapp.enums.PropertyType;
+import pf5.codehub.team5.webapp.enums.UserType;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
+
 
 @Entity
-@Table(name = "USER")
+@Table(name = "USER_MEMBER")
 public class User {
 
     private static final int MAX_LENGTH_SHORT = 60;
@@ -51,11 +52,11 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "property_type")
-    private List<PropertyType> propertyTypes;
+    private PropertyType propertyTypes;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "user_type")
-    private Set<UserType> userTypes;
+    private UserType userTypes;
 
     @OneToMany(mappedBy = "user", targetEntity = Repair.class)
     private List<Repair> repairs;
@@ -64,7 +65,7 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String vat, String firstName, String lastName, String email, String phoneNumber, String password, String street, String streetNumber, String postalCode, String city, List<PropertyType> propertyTypes, Set<UserType> userTypes, List<Repair> repairs) {
+    public User(Long id, String vat, String firstName, String lastName, String email, String phoneNumber, String password, String street, String streetNumber, String postalCode, String city, PropertyType propertyTypes, UserType userTypes, List<Repair> repairs) {
         this.id = id;
         this.vat = vat;
         this.firstName = firstName;
@@ -85,108 +86,108 @@ public class User {
         return id;
     }
 
-    public String getVat() {
-        return vat;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public String getStreetNumber() {
-        return streetNumber;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public List<PropertyType> getPropertyTypes() {
-        return propertyTypes;
-    }
-
-    public Set<UserType> getUserTypes() {
-        return userTypes;
-    }
-
-    public List<Repair> getRepairs() {
-        return repairs;
-    }
-
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getVat() {
+        return vat;
     }
 
     public void setVat(String vat) {
         this.vat = vat;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getStreet() {
+        return street;
     }
 
     public void setStreet(String street) {
         this.street = street;
     }
 
+    public String getStreetNumber() {
+        return streetNumber;
+    }
+
     public void setStreetNumber(String streetNumber) {
         this.streetNumber = streetNumber;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
     }
 
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
 
+    public String getCity() {
+        return city;
+    }
+
     public void setCity(String city) {
         this.city = city;
     }
 
-    public void setPropertyTypes(List<PropertyType> propertyTypes) {
+    public PropertyType getPropertyTypes() {
+        return propertyTypes;
+    }
+
+    public void setPropertyTypes(PropertyType propertyTypes) {
         this.propertyTypes = propertyTypes;
     }
 
-    public void setUserTypes(Set<UserType> userTypes) {
+    public UserType getUserTypes() {
+        return userTypes;
+    }
+
+    public void setUserTypes(UserType userTypes) {
         this.userTypes = userTypes;
+    }
+
+    public List<Repair> getRepairs() {
+        return repairs;
     }
 
     public void setRepairs(List<Repair> repairs) {
