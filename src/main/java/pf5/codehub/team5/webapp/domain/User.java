@@ -12,47 +12,43 @@ import java.util.Set;
 @Table(name = "USER")
 public class User {
 
-    private static final int MAX_NAME_LENGTH = 60;
+    private static final int MAX_LENGTH_SHORT = 60;
 
     @Id
     @Column(name = "user_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "vat", length = MAX_NAME_LENGTH, nullable = false)
+    @Column(name = "vat", length = MAX_LENGTH_SHORT, nullable = false)
     private String vat;
 
-    @Column(name = "firstname", length = MAX_NAME_LENGTH)
+    @Column(name = "firstname", length = MAX_LENGTH_SHORT)
     private String firstName;
 
-    @Column(name = "lastname", length = MAX_NAME_LENGTH)
+    @Column(name = "lastname", length = MAX_LENGTH_SHORT)
     private String lastName;
 
-    @Column(name = "email", length = MAX_NAME_LENGTH)
+    @Column(name = "email", length = MAX_LENGTH_SHORT)
     private String email;
 
-    @Column(name = "phone_number", length = MAX_NAME_LENGTH)
+    @Column(name = "phone_number", length = MAX_LENGTH_SHORT)
     private String phoneNumber;
 
-    @Column(name = "password", length = MAX_NAME_LENGTH)
+    @Column(name = "password", length = MAX_LENGTH_SHORT)
     private String password;
 
-    @Column(name = "address", length = MAX_NAME_LENGTH)
-    private String address;
-
-    /*
-    @Column(name = "street", length = MAX_NAME_LENGTH)
+    @Column(name = "street", length = MAX_LENGTH_SHORT)
     private String street;
 
-    @Column(name = "street_number", length = MAX_NAME_LENGTH)
+    @Column(name = "street_number", length = MAX_LENGTH_SHORT)
     private String streetNumber;
 
-    @Column(name = "postal_code", length = MAX_NAME_LENGTH)
+    @Column(name = "postal_code", length = MAX_LENGTH_SHORT)
     private String postalCode;
 
-    @Column(name = "city", length = MAX_NAME_LENGTH)
+    @Column(name = "city", length = MAX_LENGTH_SHORT)
     private String city;
-     */
+
     @Enumerated(EnumType.STRING)
     @Column(name = "property_type")
     private List<PropertyType> propertyTypes;
@@ -61,7 +57,14 @@ public class User {
     @Column(name = "user_type")
     private Set<UserType> userTypes;
 
-    public User(Long id, String vat, String firstName, String lastName, String email, String phoneNumber, String password, String address, List<PropertyType> propertyTypes, Set<UserType> userTypes) {
+    @OneToMany(mappedBy = "user", targetEntity = Repair.class)
+    private List<Repair> repairs;
+
+
+    public User() {
+    }
+
+    public User(Long id, String vat, String firstName, String lastName, String email, String phoneNumber, String password, String street, String streetNumber, String postalCode, String city, List<PropertyType> propertyTypes, Set<UserType> userTypes, List<Repair> repairs) {
         this.id = id;
         this.vat = vat;
         this.firstName = firstName;
@@ -69,12 +72,13 @@ public class User {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.password = password;
-        this.address = address;
+        this.street = street;
+        this.streetNumber = streetNumber;
+        this.postalCode = postalCode;
+        this.city = city;
         this.propertyTypes = propertyTypes;
         this.userTypes = userTypes;
-    }
-
-    public User(){
+        this.repairs = repairs;
     }
 
     public Long getId() {
@@ -105,8 +109,20 @@ public class User {
         return password;
     }
 
-    public String getAddress() {
-        return address;
+    public String getStreet() {
+        return street;
+    }
+
+    public String getStreetNumber() {
+        return streetNumber;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public String getCity() {
+        return city;
     }
 
     public List<PropertyType> getPropertyTypes() {
@@ -115,6 +131,10 @@ public class User {
 
     public Set<UserType> getUserTypes() {
         return userTypes;
+    }
+
+    public List<Repair> getRepairs() {
+        return repairs;
     }
 
     public void setId(Long id) {
@@ -145,8 +165,20 @@ public class User {
         this.password = password;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public void setStreetNumber(String streetNumber) {
+        this.streetNumber = streetNumber;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public void setPropertyTypes(List<PropertyType> propertyTypes) {
@@ -157,19 +189,7 @@ public class User {
         this.userTypes = userTypes;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", vat='" + vat + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", password='" + password + '\'' +
-                ", address='" + address + '\'' +
-                ", propertyTypes=" + propertyTypes +
-                ", userTypes=" + userTypes +
-                '}';
+    public void setRepairs(List<Repair> repairs) {
+        this.repairs = repairs;
     }
 }
