@@ -17,7 +17,7 @@ public class UserRole {
     @Column(name = "name", nullable = false)
     String name;
 
-    @ManyToMany(mappedBy = "userRole")
+    @ManyToMany(targetEntity = User.class, mappedBy = "userRole")
     Set<User> users;
 
     public UserRole() {

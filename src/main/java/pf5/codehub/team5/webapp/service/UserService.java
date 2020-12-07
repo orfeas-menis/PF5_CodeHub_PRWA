@@ -10,8 +10,8 @@ import java.util.Optional;
 public interface UserService {
 
 
-    Optional<User> findUser(Long id);
-    List<User> getAllUsers();
+//    Optional<User> findUser(Long id);
+//    List<User> getAllUsers();
 //    public Optional<User> findUserByFirstNameAndLastName(String firstName, String lastName) ;
 //    public Optional<User> fetchUserWithRepairsByUserId(Long id) ;
 

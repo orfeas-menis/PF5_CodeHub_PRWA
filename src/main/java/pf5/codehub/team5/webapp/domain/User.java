@@ -3,7 +3,6 @@ package pf5.codehub.team5.webapp.domain;
 
 
 import pf5.codehub.team5.webapp.enums.PropertyType;
-import pf5.codehub.team5.webapp.enums.UserType;
 
 import javax.persistence.*;
 import java.util.List;
@@ -55,11 +54,7 @@ public class User {
     @Column(name = "property_type")
     private PropertyType propertyTypes;
 
-    @ManyToMany
-    @JoinTable(
-            name = "user_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_role_id"))
+    @ManyToMany(targetEntity = UserRole.class)
     Set<UserRole> userRole;
 
     @OneToMany(mappedBy = "user", targetEntity = Repair.class)
