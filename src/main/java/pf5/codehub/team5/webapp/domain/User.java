@@ -7,6 +7,7 @@ import pf5.codehub.team5.webapp.enums.UserType;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -54,9 +55,12 @@ public class User {
     @Column(name = "property_type")
     private PropertyType propertyTypes;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "user_type")
-    private UserType userTypes;
+    @ManyToMany
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_role_id"))
+    Set<UserRole> userRole;
 
     @OneToMany(mappedBy = "user", targetEntity = Repair.class)
     private List<Repair> repairs;
@@ -65,8 +69,7 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String vat, String firstName, String lastName, String email, String phoneNumber, String password, String street, String streetNumber, String postalCode, String city, PropertyType propertyTypes, UserType userTypes, List<Repair> repairs) {
-        this.id = id;
+    public User(String vat, String firstName, String lastName, String email, String phoneNumber, String password, String street, String streetNumber, String postalCode, String city, PropertyType propertyTypes, Set<UserRole> userRole, List<Repair> repairs) {
         this.vat = vat;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -78,7 +81,7 @@ public class User {
         this.postalCode = postalCode;
         this.city = city;
         this.propertyTypes = propertyTypes;
-        this.userTypes = userTypes;
+        this.userRole = userRole;
         this.repairs = repairs;
     }
 
@@ -178,12 +181,12 @@ public class User {
         this.propertyTypes = propertyTypes;
     }
 
-    public UserType getUserTypes() {
-        return userTypes;
+    public Set<UserRole> getUserRole() {
+        return userRole;
     }
 
-    public void setUserTypes(UserType userTypes) {
-        this.userTypes = userTypes;
+    public void setUserRole(Set<UserRole> userRole) {
+        this.userRole = userRole;
     }
 
     public List<Repair> getRepairs() {
