@@ -10,7 +10,7 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "USER_MEMBER")
+@Table(name = "MEMBERS")
 public class User {
 
     private static final int MAX_LENGTH_SHORT = 60;
@@ -55,6 +55,11 @@ public class User {
     private PropertyType propertyTypes;
 
     @ManyToMany(targetEntity = UserRole.class)
+    @JoinTable(
+            name = "ROLE_USER",
+            joinColumns  = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
     Set<UserRole> userRole;
 
     @OneToMany(mappedBy = "user", targetEntity = Repair.class)
