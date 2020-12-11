@@ -4,13 +4,13 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "USER_ROLES")
+@Table(name = "ROLES")
 public class UserRole {
 
     private static final int MAX_LENGTH_SHORT = 60;
 
     @Id
-    @Column(name = "user_role_id", nullable = false)
+    @Column(name = "role_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
