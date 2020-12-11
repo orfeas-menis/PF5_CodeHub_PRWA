@@ -54,7 +54,7 @@ public class User {
     @Column(name = "property_type")
     private PropertyType propertyTypes;
 
-    @ManyToMany(targetEntity = UserRole.class)
+    @ManyToMany(targetEntity = UserRole.class, fetch = FetchType.EAGER)
     Set<UserRole> userRole;
 
     @OneToMany(mappedBy = "user", targetEntity = Repair.class)
