@@ -19,10 +19,10 @@
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/owners">Owners</a>
+            <a class="nav-link" href="#">Create</a>
           </li>
           <li class="nav-item">
-                      <a class="nav-link" href="/repair">Repairs</a>
+                      <a class="nav-link" href="#">Update</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
