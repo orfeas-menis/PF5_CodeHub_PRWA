@@ -14,6 +14,7 @@ public interface UserService {
 
 //    Optional<User> findUser(Long id);
 //    List<User> getAllUsers();
+    List<UserModel> findAll();
 //    public Optional<User> findUserByFirstNameAndLastName(String firstName, String lastName) ;
 //    public Optional<User> fetchUserWithRepairsByUserId(Long id) ;
 

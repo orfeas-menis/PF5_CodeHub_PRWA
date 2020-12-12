@@ -61,7 +61,7 @@ public class User {
             joinColumns  = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    Set<UserRole> userRole;
+    private Set<UserRole> userRole;
 
     @OneToMany(mappedBy = "user", targetEntity = Repair.class)
     private List<Repair> repairs;

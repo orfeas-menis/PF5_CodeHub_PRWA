@@ -9,6 +9,7 @@ import pf5.codehub.team5.webapp.repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -17,15 +18,23 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Autowired
-    private UserToUserModelMapper mapper;
+    private UserToUserModelMapper userModelMapper;
 
     @Override
     public Optional<UserModel> findUser(Long id){
         return userRepository
                 .findById(id)
-                .map(user -> mapper.mapToUserModel(user));
+                .map(user -> userModelMapper.map(user));
     }
 
+    @Override
+    public List<UserModel> findAll() {
+        return userRepository
+                .findAll()
+                .stream()
+                .map(user -> userModelMapper.map(user))
+                .collect(Collectors.toList());
+    }
 //
 //    @Override
 //    public Optional<User> findUser(Long id) {
