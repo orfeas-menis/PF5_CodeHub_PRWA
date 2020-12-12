@@ -1,89 +1,30 @@
-package pf5.codehub.team5.webapp.domain;
+package pf5.codehub.team5.webapp.model;
 
-
-
+import pf5.codehub.team5.webapp.domain.Repair;
+import pf5.codehub.team5.webapp.domain.UserRole;
 import pf5.codehub.team5.webapp.enums.PropertyType;
 
-import javax.persistence.*;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.util.List;
 import java.util.Set;
 
-
-@Entity
-@Table(name = "MEMBERS")
-public class User {
-
-    private static final int MAX_LENGTH_SHORT = 60;
-
-    @Id
-    @Column(name = "user_id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class UserModel {
     private Long id;
-
-    @Column(name = "vat", length = MAX_LENGTH_SHORT, nullable = false)
     private String vat;
-
-    @Column(name = "firstname", length = MAX_LENGTH_SHORT)
     private String firstName;
-
-    @Column(name = "lastname", length = MAX_LENGTH_SHORT)
     private String lastName;
-
-    @Column(name = "email", length = MAX_LENGTH_SHORT)
     private String email;
-
-    @Column(name = "phone_number", length = MAX_LENGTH_SHORT)
     private String phoneNumber;
-
-    @Column(name = "password", length = MAX_LENGTH_SHORT)
-    private String password;
-
-    @Column(name = "street", length = MAX_LENGTH_SHORT)
     private String street;
-
-    @Column(name = "street_number", length = MAX_LENGTH_SHORT)
     private String streetNumber;
-
-    @Column(name = "postal_code", length = MAX_LENGTH_SHORT)
     private String postalCode;
-
-    @Column(name = "city", length = MAX_LENGTH_SHORT)
     private String city;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "property_type")
     private PropertyType propertyTypes;
-
-
-    @ManyToMany(targetEntity = UserRole.class, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "ROLE_USER",
-            joinColumns  = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
     private Set<UserRole> userRole;
-
-    @OneToMany(mappedBy = "user", targetEntity = Repair.class)
     private List<Repair> repairs;
 
-
-    public User() {
-    }
-
-    public User(String vat, String firstName, String lastName, String email, String phoneNumber, String password, String street, String streetNumber, String postalCode, String city, PropertyType propertyTypes, Set<UserRole> userRole, List<Repair> repairs) {
-        this.vat = vat;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.password = password;
-        this.street = street;
-        this.streetNumber = streetNumber;
-        this.postalCode = postalCode;
-        this.city = city;
-        this.propertyTypes = propertyTypes;
-        this.userRole = userRole;
-        this.repairs = repairs;
+    public UserModel() {
     }
 
     public Long getId() {
@@ -132,14 +73,6 @@ public class User {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getStreet() {
