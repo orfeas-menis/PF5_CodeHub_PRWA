@@ -19,7 +19,7 @@
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/owners">Owners</a>
+            <a class="nav-link" href="/owner">Owners</a>
           </li>
           <li class="nav-item">
                       <a class="nav-link" href="/repair">Repairs</a>
