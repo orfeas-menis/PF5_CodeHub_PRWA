@@ -16,13 +16,19 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/admin">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="/owner" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Owners
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Create</a>
+                        <a class="dropdown-item" href="#">Update</a>
+                      </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Create</a>
-              </li>
-              <li class="nav-item">
-                          <a class="nav-link" href="#">Update</a>
+                          <a class="nav-link" href="/repair">Repairs</a>
               </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -36,14 +42,21 @@
 
           <table class="table">
               <thead>
+
               <th>First Name</th>
               <th>Last name</th>
+              <th>E-mail</th>
+              <th class="text-center">Edit</th>
+              <th class="text-center">Remove</th>
               </thead>
               <tbody>
               <#list users as user>
                   <tr>
+
                       <td>${user.firstName}</td>
                       <td> ${user.lastName}</td>
+                      <td>${user.email}</td>
+
                   </tr>
               </#list>
               </tbody>
@@ -70,7 +83,8 @@
                   </div>
               </div>
           </div>
-      </div>
+    </div>
+
 
 
     </body>

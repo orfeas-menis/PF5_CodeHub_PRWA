@@ -11,12 +11,12 @@ import pf5.codehub.team5.webapp.domain.UserRole;
 import pf5.codehub.team5.webapp.repository.UserRepository;
 
 @RestController
-public class HelloController {
+public class HomeController {
 
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping({"/", "/hello"})
+    @GetMapping({"/", "/home"})
     public String hello() {
 
         for (User user : userRepository.findAll()) {

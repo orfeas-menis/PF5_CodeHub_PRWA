@@ -5,10 +5,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class AdminHomeController {
+public class AdminController {
     @GetMapping(path = "/admin")
     public String adminHome(Model model) {
-
         return "adminhome";
     }
 }
