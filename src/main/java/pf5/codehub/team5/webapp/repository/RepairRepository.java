@@ -14,8 +14,12 @@ import java.util.Optional;
 public interface RepairRepository extends JpaRepository<Repair, Long> {
     Optional<Repair> findByDate(Date date);
 
-    Optional<User> findByVat(String vat);
+    Optional<Repair> findByVat(String vat);
 
     @Query(value="SELECT a FROM User a JOIN FETCH a.repairs WHERE a.id = (:id)")
     Optional<Repair> fetchUserWithRepairsByUserId(@Param("id") Long id);
+
+    @Query(value="SELECT a FROM User a JOIN FETCH a.repairs WHERE a.vat = (:vat)")
+    Optional<Repair> fetchUserWithRepairsByUserVat(@Param("vat") Long vat);
+
 }

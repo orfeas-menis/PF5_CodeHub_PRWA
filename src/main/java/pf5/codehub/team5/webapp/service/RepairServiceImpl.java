@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import pf5.codehub.team5.webapp.domain.Repair;
 import pf5.codehub.team5.webapp.mappers.RepairToRepairModelMapper;
 import pf5.codehub.team5.webapp.model.RepairModel;
-import pf5.codehub.team5.webapp.model.UserModel;
 import pf5.codehub.team5.webapp.repository.RepairRepository;
 
 import java.util.Date;
@@ -14,7 +13,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class RepairServiceImpl {
+public class RepairServiceImpl implements  RepairService{
     @Autowired
     private RepairRepository repairRepository;
 
@@ -23,17 +22,17 @@ public class RepairServiceImpl {
 
     @Override
     public Optional<RepairModel> findRepair(Long id){
-        return repairRepository
+        return RepairRepository
                 .findById(id)
                 .map(repair -> repairModelMapper.map(repair));
     }
 
     @Override
     public List<RepairModel> findAll() {
-        return repairRepository
+        return RepairRepository
                 .findAll()
                 .stream()
-                .map(user -> repairModelMapper.map(repair))
+                .map(repair -> repairModelMapper.map(repair))
                 .collect(Collectors.toList());
     }
 
@@ -45,10 +44,10 @@ public class RepairServiceImpl {
     }
 
     @Override
-    public Optional<UserModel> findByVat(String vat) {
+    public Optional<RepairModel> findByVat(String vat) {
         return repairRepository
                 .findByVat(vat)
-                .map(user -> repairModelMapper.map(repair));
+                .map(repair -> repairModelMapper.map(repair));
     }
 
     @Override
