@@ -13,14 +13,20 @@
                       <a class="dropdown-item" href="#">Create</a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="/owner">Update</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="/search">Search</a>
+
                 </div>
           </li>
           <li class="nav-item">
              <a class="nav-link" href="/repair">Repairs</a>
           </li>
+
+          <form class="form-inline my-2 my-lg-0" text-align: center>
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+
         </ul>
+
         <form class="form-inline my-2 my-lg-0">
 
           <button  class="btn btn-danger" type="submit">Log Out</button>

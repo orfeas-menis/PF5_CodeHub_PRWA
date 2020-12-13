@@ -3,7 +3,7 @@
 
     <head>
 
-        <title>Search Results</title>
+        <title>Search</title>
         <#include "/partials/head.ftlh">
 
     </head>
@@ -11,6 +11,8 @@
     <body>
 
          <#include "/partials/navbar.ftlh">
+
+
 
     </body>
 
