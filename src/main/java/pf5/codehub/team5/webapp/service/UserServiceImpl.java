@@ -35,24 +35,30 @@ public class UserServiceImpl implements UserService {
                 .map(user -> userModelMapper.map(user))
                 .collect(Collectors.toList());
     }
-//
+
 //    @Override
-//    public Optional<User> findUser(Long id) {
-//        return userRepository.findById(id);
+//    public Optional<UserModel> findByFirstNameAndLastName(String firstName, String lastName) {
+//        return userRepository
+//                .findByFirstNameAndLastName(firstName,lastName)
+//                .map(user -> userModelMapper.map(user));
 //    }
-//
-//    @Override
-//    public List<User> getAllUsers() {
-//        return userRepository.findAll();
-//    }
-//
-//    @Override
-//    public Optional<User> findUserByFirstNameAndLastName(String firstName, String lastName) {
-//        return userRepository.findUserByFirstNameAndLastName(firstName,lastName);
-//    }
-//
-//    @Override
-//    public Optional<User> fetchUserWithRepairsByUserId(Long id) {
-//
-//    }
+
+    @Override
+    public Optional<UserModel> findByEmail(String email) {
+        return userRepository
+                .findByEmail(email)
+                .map(user -> userModelMapper.map(user));
+    }
+
+    @Override
+    public Optional<UserModel> findByVat(String vat) {
+        return userRepository
+                .findByVat(vat)
+                .map(user -> userModelMapper.map(user));
+    }
+
+    @Override
+    public Optional<User> fetchUserWithRepairsByUserId(Long id) {
+        return userRepository.fetchUserWithRepairsByUserId(id);
+    }
 }
