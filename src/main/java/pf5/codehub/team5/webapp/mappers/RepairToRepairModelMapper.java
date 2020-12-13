@@ -1,9 +1,11 @@
 package pf5.codehub.team5.webapp.mappers;
 
+import org.springframework.stereotype.Component;
 import pf5.codehub.team5.webapp.domain.Repair;
 import pf5.codehub.team5.webapp.model.RepairModel;
 
 
+@Component
 public class RepairToRepairModelMapper {
     public RepairModel map(Repair repair) {
         RepairModel repairModel = new RepairModel();
