@@ -16,31 +16,28 @@
       <div class="container pt-4">
           <table class="table">
               <thead>
-              <th>First Name</th>
-              <th>Last name</th>
-              <th>E-mail</th>
-              <th class="text-center">Edit</th>
-              <th class="text-center">Remove</th>
+                      <th>First Name</th>
+                      <th>Last name</th>
+                      <th>E-mail</th>
+                      <th class="text-center">Edit</th>
+                      <th class="text-center">Remove</th>
               </thead>
               <tbody>
 
-                 <#list users as user>
-                      <tr>
-                          <td>${user.firstName}</td>
-                          <td>${user.lastName} </td>
-                          <td>${user.email}</td>
-                          <td>
-                                <li>
-                                       <a href="/owner-edit">Edit</a>
-                               </li>
-                          </td>
-                         <td>
-                                <li>
-                                       <a href="/owner-edit">Delete</a>
-                               </li>
-                          </td>
-                      </tr>
-                 </#list>
+                      <#list users as user>
+                            <tr>
+                                 <form method="post" action="/owner-edit">
+                                       <td><input  type="text" name="firstName"  value="${user.firstName}"/></td>
+                                       <td> <input  type="text" name="lastName"  value="${user.lastName}"/>
+                                       </td>
+
+                                       <td><input  type="text" name="email"  value="${user.email}"/></td>
+                                       <td>
+                                       <input type="submit" name="test" value="Edit"/>
+                                       </td>
+                                 </form>
+                            </tr>
+                      </#list>
 
               </tbody>
           </table>
