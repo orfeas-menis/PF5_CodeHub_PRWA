@@ -2,7 +2,6 @@ package pf5.codehub.team5.webapp.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pf5.codehub.team5.webapp.domain.Repair;
 import pf5.codehub.team5.webapp.mappers.RepairToRepairModelMapper;
 import pf5.codehub.team5.webapp.model.RepairModel;
 import pf5.codehub.team5.webapp.repository.RepairRepository;
@@ -14,6 +13,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class RepairServiceImpl implements  RepairService{
+
     @Autowired
     private RepairRepository repairRepository;
 
@@ -22,14 +22,14 @@ public class RepairServiceImpl implements  RepairService{
 
     @Override
     public Optional<RepairModel> findRepair(Long id){
-        return RepairRepository
+        return repairRepository
                 .findById(id)
                 .map(repair -> repairModelMapper.map(repair));
     }
 
     @Override
     public List<RepairModel> findAll() {
-        return RepairRepository
+        return repairRepository
                 .findAll()
                 .stream()
                 .map(repair -> repairModelMapper.map(repair))
@@ -37,22 +37,19 @@ public class RepairServiceImpl implements  RepairService{
     }
 
     @Override
-    public Optional<RepairModel> findByDate(Date date) {
+    public Optional<RepairModel> findByDateTime(Date date) {
         return repairRepository
-                .findByDate(date)
+                .findByDateTime(date)
                 .map(repair -> repairModelMapper.map(repair));
     }
 
     @Override
-    public Optional<RepairModel> findByVat(String vat) {
+    public List<RepairModel> findRecentRepairs(){
         return repairRepository
-                .findByVat(vat)
-                .map(repair -> repairModelMapper.map(repair));
-    }
-
-    @Override
-    public Optional<Repair> fetchUserWithRepairsByUserId(Long id) {
-        return repairRepository.fetchUserWithRepairsByUserId(id);
+                .findRecentRepairs()
+                .stream()
+                .map(repair -> repairModelMapper.map(repair))
+                .collect(Collectors.toList());
     }
 
 }
