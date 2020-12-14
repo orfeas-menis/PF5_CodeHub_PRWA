@@ -13,7 +13,7 @@ import java.util.Optional;
 @Repository
 public interface RepairRepository extends JpaRepository<Repair, Long> {
 
-    Optional<Repair> findByDateTime(Date date);
+    List<Repair> findByDateTime(Date date);
 
     Optional<Repair> findById(Long id);
 

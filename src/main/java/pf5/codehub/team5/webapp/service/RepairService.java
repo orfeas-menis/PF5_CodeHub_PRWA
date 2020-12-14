@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface RepairService {
     Optional<RepairModel> findRepair(Long id);
     List<RepairModel> findAll();
-    Optional<RepairModel> findByDateTime(Date date);
+    List<RepairModel> findByDateTime(Date date);
     List<RepairModel> findRecentRepairs();
     List<Repair> findByUser(User user);
 }

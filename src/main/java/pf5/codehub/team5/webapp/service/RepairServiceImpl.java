@@ -39,10 +39,12 @@ public class RepairServiceImpl implements  RepairService{
     }
 
     @Override
-    public Optional<RepairModel> findByDateTime(Date date) {
+    public List<RepairModel> findByDateTime(Date date) {
         return repairRepository
                 .findByDateTime(date)
-                .map(repair -> repairModelMapper.map(repair));
+                .stream()
+                .map(repair -> repairModelMapper.map(repair))
+                .collect(Collectors.toList());
     }
 
     @Override
