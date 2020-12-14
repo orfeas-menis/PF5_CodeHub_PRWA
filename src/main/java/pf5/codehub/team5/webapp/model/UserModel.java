@@ -1,8 +1,8 @@
 package pf5.codehub.team5.webapp.model;
 
 import pf5.codehub.team5.webapp.domain.Repair;
-import pf5.codehub.team5.webapp.domain.UserRole;
 import pf5.codehub.team5.webapp.enums.PropertyType;
+import pf5.codehub.team5.webapp.enums.UserRole;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -21,7 +21,7 @@ public class UserModel {
     private String postalCode;
     private String city;
     private PropertyType propertyTypes;
-    private Set<UserRole> userRole;
+    private UserRole userRole;
     private List<Repair> repairs;
 
     public UserModel() {
@@ -115,11 +115,11 @@ public class UserModel {
         this.propertyTypes = propertyTypes;
     }
 
-    public Set<UserRole> getUserRole() {
+    public UserRole getUserRole() {
         return userRole;
     }
 
-    public void setUserRole(Set<UserRole> userRole) {
+    public void setUserRole(UserRole userRole) {
         this.userRole = userRole;
     }
 

@@ -3,6 +3,7 @@ package pf5.codehub.team5.webapp.domain;
 
 
 import pf5.codehub.team5.webapp.enums.PropertyType;
+import pf5.codehub.team5.webapp.enums.UserRole;
 
 import javax.persistence.*;
 import java.util.List;
@@ -55,13 +56,16 @@ public class User {
     private PropertyType propertyTypes;
 
 
-    @ManyToMany(targetEntity = UserRole.class, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "ROLE_USER",
-            joinColumns  = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
-    private Set<UserRole> userRole;
+//    @ManyToMany(targetEntity = UserRole.class, fetch = FetchType.EAGER)
+//    @JoinTable(
+//            name = "ROLE_USER",
+//            joinColumns  = @JoinColumn(name = "user_id"),
+//            inverseJoinColumns = @JoinColumn(name = "role_id")
+//    )
+//    private Set<UserRole> userRole;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "user_role")
+    private UserRole userRole;
 
     @OneToMany(mappedBy = "user", targetEntity = Repair.class)
     private List<Repair> repairs;
@@ -70,7 +74,7 @@ public class User {
     public User() {
     }
 
-    public User(String vat, String firstName, String lastName, String email, String phoneNumber, String password, String street, String streetNumber, String postalCode, String city, PropertyType propertyTypes, Set<UserRole> userRole, List<Repair> repairs) {
+    public User(String vat, String firstName, String lastName, String email, String phoneNumber, String password, String street, String streetNumber, String postalCode, String city, PropertyType propertyTypes, UserRole userRole, List<Repair> repairs) {
         this.vat = vat;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -182,11 +186,11 @@ public class User {
         this.propertyTypes = propertyTypes;
     }
 
-    public Set<UserRole> getUserRole() {
+    public UserRole getUserRole() {
         return userRole;
     }
 
-    public void setUserRole(Set<UserRole> userRole) {
+    public void setUserRole(UserRole userRole) {
         this.userRole = userRole;
     }
 
