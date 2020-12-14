@@ -5,19 +5,19 @@
     <head>
 
         <title>Search</title>
-        <#include "/partials/head.ftlh">
+        <#include "partials/head.ftlh">
 
     </head>
 
     <body>
 
-         <#include "/partials/navbar.ftlh">
+         <#include "partials/navbar.ftlh">
 
 
 
     <h1> HELLO </h1>
 
-         <#include "/partials/scripts.ftlh">
+         <#include "partials/scripts.ftlh">
     </body>
 
 

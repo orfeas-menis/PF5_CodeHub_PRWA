@@ -5,7 +5,7 @@
     <head>
 
         <title>Repairs</title>
-        <#include "/partials/head.ftlh">
+        <#include "partials/head.ftlh">
 
 
     </head>
@@ -39,7 +39,7 @@
 
 
 
-             <#include "/partials/scripts.ftlh">
+             <#include "partials/scripts.ftlh">
 
     </body>
 

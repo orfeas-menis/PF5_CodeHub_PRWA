@@ -5,14 +5,14 @@
     <head>
 
         <title>Repairs</title>
-        <#include "/partials/head.ftlh">
+        <#include "partials/head.ftlh">
 
 
     </head>
 
     <body>
 
-        <#include "/partials/navbar.ftlh">
+        <#include "partials/navbar.ftlh">
             <div class="container pt-4">
                       <table class="table">
                           <thead>
@@ -39,7 +39,7 @@
 
 
 
-             <#include "/partials/scripts.ftlh">
+             <#include "partials/scripts.ftlh">
 
     </body>
 

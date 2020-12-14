@@ -2,6 +2,8 @@ package pf5.codehub.team5.webapp.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pf5.codehub.team5.webapp.domain.Repair;
+import pf5.codehub.team5.webapp.domain.User;
 import pf5.codehub.team5.webapp.mappers.RepairToRepairModelMapper;
 import pf5.codehub.team5.webapp.model.RepairModel;
 import pf5.codehub.team5.webapp.repository.RepairRepository;
@@ -51,5 +53,11 @@ public class RepairServiceImpl implements  RepairService{
                 .map(repair -> repairModelMapper.map(repair))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<Repair> findByUser(User user){
+        return repairRepository.findByUser(user);
+    }
+
 
 }

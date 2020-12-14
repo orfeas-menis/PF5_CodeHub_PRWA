@@ -5,13 +5,13 @@
     <head>
 
         <title>Owners</title>
-        <#include "/partials/head.ftlh">
+        <#include "partials/head.ftlh">
 
     </head>
 
     <body>
 
-      <#include "/partials/navbar.ftlh">
+      <#include "partials/navbar.ftlh">
 
       <div class="container pt-4">
           <table class="table">
@@ -68,7 +68,7 @@
           </div>
     </div>
 
-      <#include "/partials/scripts.ftlh">
+      <#include "partials/scripts.ftlh">
 
 
 

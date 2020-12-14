@@ -16,4 +16,5 @@ public interface UserService {
     Optional<UserModel> findByEmail(String email);
     Optional<UserModel> findByVat(String vat);
     Optional<User> fetchUserWithRepairsByUserId(Long id);
+    Optional<User> findById(Long id);
 }
