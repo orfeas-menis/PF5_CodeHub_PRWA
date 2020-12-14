@@ -59,7 +59,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<User> fetchUserWithRepairsByUserId(Long id) {
-        return userRepository.fetchUserWithRepairsByUserId(id);
+        return userRepository
+                .fetchUserWithRepairsByUserId(id);
     }
 
     @Override
