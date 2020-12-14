@@ -7,7 +7,6 @@ import pf5.codehub.team5.webapp.enums.UserRole;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 
 @Entity

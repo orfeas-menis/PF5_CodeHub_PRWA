@@ -2,6 +2,7 @@ package pf5.codehub.team5.webapp.service;
 
 import org.springframework.stereotype.Service;
 import pf5.codehub.team5.webapp.domain.User;
+import pf5.codehub.team5.webapp.form.UserForm;
 import pf5.codehub.team5.webapp.model.UserModel;
 
 import java.util.List;
@@ -17,4 +18,5 @@ public interface UserService {
     Optional<UserModel> findByVat(String vat);
     Optional<User> fetchUserWithRepairsByUserId(Long id);
     Optional<User> findById(Long id);
+    UserModel createUser(UserForm userForm);
 }
