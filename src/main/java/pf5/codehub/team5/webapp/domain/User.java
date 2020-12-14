@@ -55,14 +55,6 @@ public class User {
     @Column(name = "property_type")
     private PropertyType propertyTypes;
 
-
-//    @ManyToMany(targetEntity = UserRole.class, fetch = FetchType.EAGER)
-//    @JoinTable(
-//            name = "ROLE_USER",
-//            joinColumns  = @JoinColumn(name = "user_id"),
-//            inverseJoinColumns = @JoinColumn(name = "role_id")
-//    )
-//    private Set<UserRole> userRole;
     @Enumerated(EnumType.STRING)
     @Column(name = "user_role")
     private UserRole userRole;
