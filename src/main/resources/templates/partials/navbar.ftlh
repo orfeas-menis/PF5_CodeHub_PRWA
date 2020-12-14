@@ -20,8 +20,8 @@
              <a class="nav-link" href="/repair">Repairs</a>
           </li>
 
-          <form class="form-inline my-2 my-lg-0" text-align: center>
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <form class="form-inline my-2 my-lg-0"  method="post" action="/search">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Enter Vat or Email" aria-label="Search" name="email">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
 

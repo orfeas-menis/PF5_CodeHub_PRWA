@@ -8,12 +8,14 @@ import pf5.codehub.team5.webapp.form.SearchForm;
 import pf5.codehub.team5.webapp.model.UserModel;
 import pf5.codehub.team5.webapp.service.UserServiceImpl;
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
 public class OwnerController {
 
     private static final String USERS_LIST = "users";
+    private static final String USER= "user";
 
     @Autowired
     private UserServiceImpl userService;
@@ -25,13 +27,21 @@ public class OwnerController {
         return "owner";
     }
 
-    @GetMapping("/search")
-    public String searchTest(Model model) {
-        model.addAttribute("searchForm", new SearchForm());
+//    @GetMapping(path = "/search")
+//    public String searchGet() {
+//        return "search";
+//    }
+
+    @PostMapping(path = "/search")
+    public String searchPost(Model model,@RequestParam String email) {
+        System.out.println(email);
+        Optional<UserModel> user = userService.findByEmail(email);
+        model.addAttribute(USER, user );
+
         return "search";
     }
 
-    @GetMapping(path = "/owner-edit")
+    @GetMapping( "/owner-edit")
     public String ownerEdit(Model model) {
         List<UserModel> users = userService.findAll();
         model.addAttribute(USERS_LIST,users);

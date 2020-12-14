@@ -6,6 +6,26 @@ public class SearchForm {
 
     private String lastName;
 
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getVat() {
+        return vat;
+    }
+
+    public void setVat(String vat) {
+        this.vat = vat;
+    }
+
+    private String vat;
+
     public String getFirstName() {
         return firstName;
     }
