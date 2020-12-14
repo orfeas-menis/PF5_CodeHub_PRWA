@@ -2,7 +2,6 @@ package pf5.codehub.team5.webapp.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import pf5.codehub.team5.webapp.domain.Repair;
 
@@ -23,7 +22,7 @@ public interface RepairRepository extends JpaRepository<Repair, Long> {
 //    @Query(value="SELECT a FROM User a JOIN FETCH a.repairs WHERE a.vat = (:vat)")
 //    Optional<Repair> fetchUserWithRepairsByUserVat(@Param("vat") Long vat);
 
-    @Query(value="SELECT TOP 10 * FROM Repair ORDER BY date_time DESC", nativeQuery = true)
+    @Query(value="SELECT TOP 2 * FROM Repair ORDER BY date_time DESC", nativeQuery = true)
     List<Repair> findRecentRepairs();
 
 }

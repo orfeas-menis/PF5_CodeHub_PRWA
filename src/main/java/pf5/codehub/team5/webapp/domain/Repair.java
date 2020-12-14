@@ -53,6 +53,9 @@ public class Repair {
     @JoinColumn(name = "user_id")
     private User user;
 
+    public Repair(){
+
+    }
     public Repair(Long id, String street, String streetNumber, String postalCode, String city, Date dateTime, String description, Status status, Category category, double cost, User user) {
         this.id = id;
         this.street = street;

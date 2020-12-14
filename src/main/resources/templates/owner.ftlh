@@ -1,5 +1,5 @@
 <#import "/spring.ftl" as spring />
-<DOCTYPE! html>
+<!DOCTYPE html>
 <html>
 
     <head>
@@ -11,7 +11,7 @@
 
     <body>
 
-       <#include "/partials/navbar.ftlh">
+      <#include "/partials/navbar.ftlh">
 
       <div class="container pt-4">
           <table class="table">
