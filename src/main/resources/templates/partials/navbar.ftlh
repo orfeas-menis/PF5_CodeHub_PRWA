@@ -10,7 +10,7 @@
                      Owners
                </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Create</a>
+                      <a class="dropdown-item" href="/owner/create">Create</a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="/owner">Update</a>
 
@@ -21,7 +21,10 @@
           </li>
 
           <form class="form-inline my-2 my-lg-0"  method="post" action="/search">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Enter Vat or Email" aria-label="Search" name="email">
+                       <form class="form-inline my-2 my-lg-0"  method="post" action="/search-vat">
+                        <input class="form-control mr-sm-2" type="text" class="search" placeholder="Enter Vat" aria-label="Search" name="vat">
+                         </form>
+                        <input class="form-control mr-sm-2" type="search" placeholder="Enter Email" aria-label="Search" name="email">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
 
