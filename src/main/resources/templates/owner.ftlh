@@ -13,6 +13,25 @@
 
       <#include "partials/navbar.ftlh">
 
+      <form id="searchByAfmOrEmailForm"  class="form-inline my-2 my-lg-0"  method="post" >
+
+                                 <h6  style="margin:3px;"> E-mail </h6> <input type="radio"  style="margin:20px;"  name="searchRadio" onclick="changeFormAction(1)">
+                                  <h6  style="margin:3px;"> Vat </h6><input type="radio"  style="margin:20px;"  name="searchRadio" onclick="changeFormAction(2)">
+                                  <input class="form-control mr-sm-2" type="search" placeholder="Choose and Search" aria-label="Search" name="parameter">
+                                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                        <script>
+                                function changeFormAction(formAction){
+                                  if(formAction == 1){
+                                    $('#searchByAfmOrEmailForm').attr('action', '/search-email');
+                                  }
+                                  else if (formAction == 2){
+                                    $('#searchByAfmOrEmailForm').attr('action', '/search-vat');
+                                  }
+
+                                }
+                        </script>
+
       <div class="container pt-4">
           <table class="table">
               <thead>
