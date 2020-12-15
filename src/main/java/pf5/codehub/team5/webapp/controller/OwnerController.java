@@ -4,15 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import pf5.codehub.team5.webapp.domain.User;
 import pf5.codehub.team5.webapp.enums.PropertyType;
 import pf5.codehub.team5.webapp.enums.UserRole;
 import pf5.codehub.team5.webapp.form.UserForm;
 import pf5.codehub.team5.webapp.model.UserModel;
 import pf5.codehub.team5.webapp.service.UserServiceImpl;
+import pf5.codehub.team5.webapp.validators.UserCreateValidator;
+
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
@@ -26,10 +28,15 @@ public class OwnerController {
     private static final String USER_FORM= "userForm";
     private static final String USER_ROLES= "userRoles";
     private static final String PROPERTY_TYPES= "propertyTypes";
+    private static final String ERROR_MESSAGE = "errorMessage";
+
 
 
     @Autowired
     private UserServiceImpl userService;
+
+    @Autowired
+    private UserCreateValidator userCreateValidator;
 
     @GetMapping(path = "/owner")
     public String ownerTab(Model model) {
@@ -76,18 +83,26 @@ public class OwnerController {
         return "ownerCreate";
     }
 
+    @InitBinder(USER_FORM)
+    protected void initBinder(final WebDataBinder binder) {
+        binder.addValidators(userCreateValidator);
+    }
 
     @PostMapping("/owner/create")
-    public String ownerCreate(Model model,  @Valid @ModelAttribute(USER_FORM) UserForm userForm,
-                              BindingResult bindingResult){
+    public String ownerCreate(Model model,
+                              @Valid @ModelAttribute(USER_FORM) UserForm userForm,
+                              BindingResult bindingResult,
+                              RedirectAttributes redirectAttributes){
         if (bindingResult.hasErrors()) {
             //have some error handling here, perhaps add extra error messages to the model
-//            model.addAttribute(ERROR_MESSAGE, "an error occurred");
+            model.addAttribute(ERROR_MESSAGE, "validation errors occurred");
             return "ownerCreate";
         }
-        userService.createUser(userForm);
+        UserModel userModel = userService.createUser(userForm);
+//        redirectAttributes.addAttribute("id", userModel.getId());
         //we can display the created user if we take the response from createUser and put it as an attribute
-        //we have to make some validations and also see what happens with password
+        //we have to also make frontend validation
+        //we have to see what happens with password
         return "redirect:/owner";
     }
 
