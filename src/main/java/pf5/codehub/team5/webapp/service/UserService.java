@@ -11,12 +11,14 @@ import java.util.Optional;
 
 public interface UserService {
 
-    Optional<UserModel> findUser(Long id);
+    Optional<User> findUser(Long id);
 //    Optional<UserModel> findByFirstNameAndLastName(String firstName, String lastName);
     List<UserModel> findAll();
     Optional<UserModel> findByEmail(String email);
     Optional<UserModel> findByVat(String vat);
     Optional<User> fetchUserWithRepairsByUserId(Long id);
-    Optional<User> findById(Long id);
+    Optional<UserModel> findById(Long id);
     UserModel createUser(UserForm userForm);
+    Optional<UserForm> findUserForm(Long id);
+    UserModel updateUser(UserForm userForm);
 }

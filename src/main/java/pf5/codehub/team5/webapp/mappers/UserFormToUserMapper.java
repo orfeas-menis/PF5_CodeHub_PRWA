@@ -23,6 +23,9 @@ public class UserFormToUserMapper {
         user.setStreetNumber(userForm.getStreetNumber());
         user.setVat(userForm.getVat());
         user.setPassword(userForm.getPassword());
+        if (userForm.getId() != null){
+            user.setId(userForm.getId());
+        }
         return user;
     }
 }

@@ -4,10 +4,7 @@ import pf5.codehub.team5.webapp.domain.Repair;
 import pf5.codehub.team5.webapp.enums.PropertyType;
 import pf5.codehub.team5.webapp.enums.UserRole;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import java.util.List;
-import java.util.Set;
 
 public class UserModel {
     private Long id;

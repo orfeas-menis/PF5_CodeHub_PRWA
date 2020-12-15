@@ -2,6 +2,7 @@ package pf5.codehub.team5.webapp.mappers;
 
 import org.springframework.stereotype.Component;
 import pf5.codehub.team5.webapp.domain.User;
+import pf5.codehub.team5.webapp.enums.UserRole;
 import pf5.codehub.team5.webapp.model.UserModel;
 
 import java.time.LocalDate;
@@ -21,8 +22,9 @@ public class UserToUserModelMapper {
         userModel.setPostalCode(user.getPostalCode());
         userModel.setCity(user.getCity());
         userModel.setPropertyTypes(user.getPropertyTypes());
-        userModel.setUserRole(user.getUserRole());
+        userModel.setUserRole(user.getUserRole() != null ? user.getUserRole() : UserRole.OWNER);
         userModel.setRepairs(user.getRepairs());
+        userModel.setId(user.getId());
 
         return userModel;
     }

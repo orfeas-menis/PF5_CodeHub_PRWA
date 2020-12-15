@@ -28,7 +28,7 @@ public class UserHomeController {
 
     @GetMapping(path = "/user")
     public String userHome(Model model) {
-        Optional<User> user = userService.findById(1L);
+        Optional<User> user = userService.findUser(1L);
         List<Repair> repairs = repairService.findByUser(user.get());
         model.addAttribute(REPAIRS_LIST,repairs);
         return "userhome";
