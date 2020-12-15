@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import pf5.codehub.team5.webapp.domain.User;
 import pf5.codehub.team5.webapp.form.UserForm;
 import pf5.codehub.team5.webapp.mappers.UserFormToUserMapper;
+import pf5.codehub.team5.webapp.mappers.UserToUserFormMapper;
 import pf5.codehub.team5.webapp.mappers.UserToUserModelMapper;
 import pf5.codehub.team5.webapp.model.UserModel;
 import pf5.codehub.team5.webapp.repository.UserRepository;
@@ -23,13 +24,15 @@ public class UserServiceImpl implements UserService {
     private UserToUserModelMapper userModelMapper;
 
     @Autowired
+    private UserToUserFormMapper userFormMapper;
+
+    @Autowired
     private UserFormToUserMapper userMapper;
 
     @Override
-    public Optional<UserModel> findUser(Long id){
+    public Optional<User> findUser(Long id){
         return userRepository
-                .findById(id)
-                .map(user -> userModelMapper.map(user));
+                .findById(id);
     }
 
     @Override
@@ -69,13 +72,32 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> findById(Long id) {return userRepository.findById(id);}
+    public Optional<UserModel> findById(Long id) {
+        return userRepository
+                .findById(id)
+                .map(user -> userModelMapper.map(user));
+    }
 
     @Override
     public UserModel createUser(UserForm userForm) {
-        //we have to add validation about the uniqueness of email, vat etc.
         User user = userMapper.map(userForm);
         User newUser = userRepository.save(user);
         return userModelMapper.map(newUser);
     }
+
+    @Override
+    public UserModel updateUser(UserForm userForm) {
+        User user = userMapper.map(userForm);
+        User newUser = userRepository.save(user);
+        return userModelMapper.map(newUser);
+    }
+
+    @Override
+    public Optional<UserForm> findUserForm(Long id) {
+        return userRepository
+                .findById(id)
+                .map(user -> userFormMapper.map(user));
+    }
+
+
 }

@@ -17,6 +17,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> findByVat(String vat);
 
+    Optional<User> findById(Long id);
+
     @Query(value="SELECT a FROM User a JOIN FETCH a.repairs WHERE a.id = (:id)")
     Optional<User> fetchUserWithRepairsByUserId(@Param("id") Long id);
 }

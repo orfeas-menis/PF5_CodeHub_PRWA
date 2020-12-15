@@ -1,10 +1,7 @@
 package pf5.codehub.team5.webapp.form;
 
-import pf5.codehub.team5.webapp.enums.PropertyType;
-import pf5.codehub.team5.webapp.enums.UserRole;
-
-
 public class UserForm {
+    private Long id;
     private String vat;
     private String firstName;
     private String lastName;
@@ -21,7 +18,8 @@ public class UserForm {
     public UserForm() {
     }
 
-    public UserForm(String vat, String firstName, String lastName, String email, String phoneNumber, String street, String streetNumber, String postalCode, String city, String propertyType, String userRole, String password) {
+    public UserForm(Long id, String vat, String firstName, String lastName, String email, String phoneNumber, String street, String streetNumber, String postalCode, String city, String propertyType, String userRole, String password) {
+        this.id = id;
         this.vat = vat;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -34,6 +32,14 @@ public class UserForm {
         this.propertyType = propertyType;
         this.userRole = userRole;
         this.password = password;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getVat() {
