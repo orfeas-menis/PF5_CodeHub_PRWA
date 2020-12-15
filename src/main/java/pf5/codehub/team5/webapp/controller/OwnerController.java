@@ -7,7 +7,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import pf5.codehub.team5.webapp.domain.User;
 import pf5.codehub.team5.webapp.enums.PropertyType;
 import pf5.codehub.team5.webapp.enums.UserRole;
 import pf5.codehub.team5.webapp.form.UserForm;
@@ -45,18 +44,23 @@ public class OwnerController {
         return "owner";
     }
 
-//    @GetMapping(path = "/search")
-//    public String searchGet() {
-//        return "search";
-//    }
+    @PostMapping(path = "/search-vat")
+    public String searchPostVat(Model model,@RequestParam String parameter) {
 
-    @PostMapping(path = "/search")
-    public String searchPost(Model model,@RequestParam String email) {
-        System.out.println(email);
-        Optional<UserModel> user = userService.findByEmail(email);
-        model.addAttribute(USER, user );
+        Optional<UserModel> user = userService.findByVat(parameter);
+        model.addAttribute(USER, user.get() );
 
-        return "search";
+        return "search-vat";
+    }
+
+
+    @PostMapping(path = "/search-email")
+    public String searchPostEmail(Model model,@RequestParam String parameter) {
+
+        Optional<UserModel> user = userService.findByEmail(parameter);
+        model.addAttribute(USER, user.get() );
+
+        return "search-email";
     }
 
     @GetMapping( "/owner/edit")

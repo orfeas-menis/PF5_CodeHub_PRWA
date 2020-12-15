@@ -18,6 +18,7 @@
               <thead>
               <th>First Name</th>
               <th>Last name</th>
+              <th>Vat</th>
               <th>E-mail</th>
               <th class="text-center">Edit</th>
               <th class="text-center">Remove</th>
@@ -28,6 +29,7 @@
                       <tr>
                           <td>${user.firstName}</td>
                           <td>${user.lastName} </td>
+                          <td>${user.vat}</td>
                           <td>${user.email}</td>
                           <td>
                                 <li>
