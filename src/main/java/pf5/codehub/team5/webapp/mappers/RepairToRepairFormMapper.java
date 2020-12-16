@@ -19,7 +19,7 @@ public class RepairToRepairFormMapper {
         repairForm.setCategory(repair.getCategory().name());
         repairForm.setCost(repair.getCost());
         repairForm.setUser(repair.getUser());
-
+        repairForm.setId(repair.getId());
 
         return repairForm;
     }

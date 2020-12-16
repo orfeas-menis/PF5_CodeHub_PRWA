@@ -22,7 +22,9 @@ public class RepairFormToRepairMapper {
         repair.setCategory(Category.valueOf(repairForm.getCategory()));
         repair.setCost(repairForm.getCost());
         repair.setUser(repairForm.getUser());
-
+        if (repairForm.getId() != null){
+            repair.setId(repairForm.getId());
+        }
         return repair;
     }
 

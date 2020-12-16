@@ -19,7 +19,7 @@ public class AdminController {
 
     @GetMapping(path = "/admin")
     public String adminHome(Model model) {
-        List<RepairModel> repairs = repairService.findRecentRepairs();
+        List<RepairModel> repairs = repairService.findTodayActiveRepairs();
         model.addAttribute(REPAIRS_LIST,repairs);
         return "adminhome";
     }

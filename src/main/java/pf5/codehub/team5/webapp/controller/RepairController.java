@@ -30,7 +30,7 @@ public class RepairController {
 
     @GetMapping(path = "/repair")
     public String repairHome(Model model) {
-        List<RepairModel> repairs = repairService.findAll();
+        List<RepairModel> repairs = repairService.findFirst10();
         model.addAttribute(REPAIRS_LIST,repairs);
 
         return "repair";

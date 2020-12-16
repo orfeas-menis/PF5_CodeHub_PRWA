@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     private UserFormToUserMapper userMapper;
 
     @Override
-    public Optional<User> findUser(Long id){
+    public Optional<User> findUser(Long id) {
         return userRepository
                 .findById(id);
     }
@@ -39,6 +39,15 @@ public class UserServiceImpl implements UserService {
     public List<UserModel> findAll() {
         return userRepository
                 .findAll()
+                .stream()
+                .map(user -> userModelMapper.map(user))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<UserModel> findFirst10() {
+        return userRepository
+                .findFirst10By()
                 .stream()
                 .map(user -> userModelMapper.map(user))
                 .collect(Collectors.toList());
@@ -99,5 +108,9 @@ public class UserServiceImpl implements UserService {
                 .map(user -> userFormMapper.map(user));
     }
 
+    @Override
+    public void deleteById(Long id) {
+        if (userRepository.findById(id).isPresent()) userRepository.deleteById(id);
+    }
 
 }

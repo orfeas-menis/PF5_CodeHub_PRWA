@@ -17,14 +17,13 @@ public interface RepairRepository extends JpaRepository<Repair, Long> {
 
     Optional<Repair> findById(Long id);
 
-//    @Query(value="SELECT a FROM User a JOIN FETCH a.repairs WHERE a.id = (:id)")
-//    Optional<Repair> fetchUserWithRepairsByUserId(@Param("id") Long id);
-//
-//    @Query(value="SELECT a FROM User a JOIN FETCH a.repairs WHERE a.vat = (:vat)")
-//    Optional<Repair> fetchUserWithRepairsByUserVat(@Param("vat") Long vat);
-
-    @Query(value="SELECT TOP 2 * FROM Repair ORDER BY date_time DESC", nativeQuery = true)
+    /* findRecentRepairs() and findTop10ByOrderByDateTimeDesc() perform (or at least should perform) the same task */
+    @Query(value="SELECT TOP 10 * FROM Repair ORDER BY date_time DESC", nativeQuery = true)
     List<Repair> findRecentRepairs();
+
+    List<Repair> findTop10ByOrderByDateTimeDesc();
+
+    List<Repair>findFirst10By();
 
     List<Repair> findByUser(User user);
 }

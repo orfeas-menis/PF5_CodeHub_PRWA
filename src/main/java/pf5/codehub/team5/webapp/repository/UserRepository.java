@@ -6,6 +6,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import pf5.codehub.team5.webapp.domain.User;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -18,6 +19,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByVat(String vat);
 
     Optional<User> findById(Long id);
+
+    List<User> findFirst10By();
 
     @Query(value="SELECT a FROM User a JOIN FETCH a.repairs WHERE a.id = (:id)")
     Optional<User> fetchUserWithRepairsByUserId(@Param("id") Long id);

@@ -14,8 +14,9 @@ import java.util.Optional;
 public interface RepairService {
     Optional<RepairModel> findRepair(Long id);
     List<RepairModel> findAll();
+    List<RepairModel> findFirst10();
     List<RepairModel> findByDateTime(Date date);
-    List<RepairModel> findRecentRepairs();
+    List<RepairModel> findTodayActiveRepairs();
     List<Repair> findByUser(User user);
     RepairModel createRepair(RepairForm repairForm);
 }

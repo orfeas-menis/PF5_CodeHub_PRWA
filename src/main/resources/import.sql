@@ -7,9 +7,10 @@ INSERT INTO MEMBERS (city,email,firstname,lastname,password,phone_number,postal_
 INSERT INTO MEMBERS (city,email,firstname,lastname,password,phone_number,postal_code,property_type,street,street_number,vat,user_role) VALUES ('Komotini','g@bla.com','Dimitra','Alexandrou','alex#3','6990000004','17945','MEZO','Panepistimiou','97','8921359087','OWNER');
 
 
-INSERT INTO REPAIR (category, city, cost, date_time, description, postal_code, status, street, street_number, user_id) VALUES ('PAINT', 'Athens', 30, CURRENT_TIMESTAMP,'Beautiful Design','15770','INPROGRESS','Panepistimiou','16','3');
-INSERT INTO REPAIR (category, city, cost, date_time, description, postal_code, status, street, street_number, user_id) VALUES ('PLUMP', 'Thessaloniki', 50, CURRENT_TIMESTAMP,'Good Job','12340','COMPLETED','Aiolou','51','5');
-INSERT INTO REPAIR (category, city, cost, date_time, description, postal_code, status, street, street_number, user_id) VALUES ('ELECTR', 'Larissa', 30, CURRENT_TIMESTAMP,'Im Waiting','43212','PENDIND','Mpenaki','18','1');
-INSERT INTO REPAIR (category, city, cost, date_time, description, postal_code, status, street, street_number, user_id) VALUES ('CHAMBRANLE', 'Volos', 20, CURRENT_TIMESTAMP,'Almost Done','29865','INPROGRESS','Stadiou','20','2');
+INSERT INTO REPAIR (category, city, cost, date_time, description, postal_code, status, street, street_number, user_id) VALUES ('PAINT', 'Athens', 30, CAST( GETDATE() AS Date ) ,'Beautiful Design','15770','INPROGRESS','Panepistimiou','16','3');
+INSERT INTO REPAIR (category, city, cost, date_time, description, postal_code, status, street, street_number, user_id) VALUES ('PLUMP', 'Thessaloniki', 50, CAST( GETDATE() AS Date ),'Good Job','12340','COMPLETED','Aiolou','51','5');
+INSERT INTO REPAIR (category, city, cost, date_time, description, postal_code, status, street, street_number, user_id) VALUES ('ELECTR', 'Larissa', 30, CAST( GETDATE() AS Date ),'Im Waiting','43212','PENDIND','Mpenaki','18','1');
+INSERT INTO REPAIR (category, city, cost, date_time, description, postal_code, status, street, street_number, user_id) VALUES ('CHAMBRANLE', 'Volos', 20, CAST( GETDATE() AS Date ),'Almost Done','29865','INPROGRESS','Stadiou','20','2');
+INSERT INTO REPAIR (category, city, cost, date_time, description, postal_code, status, street, street_number, user_id) VALUES ('ELECTR', 'Volos', 26, CAST( GETDATE() - 1 AS Date ),'Yesterday Repair','16121','INPROGRESS','Stadiou','20','6');
 
 

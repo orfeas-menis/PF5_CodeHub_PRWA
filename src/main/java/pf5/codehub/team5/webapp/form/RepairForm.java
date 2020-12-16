@@ -6,6 +6,7 @@ import java.util.Date;
 
 public class RepairForm {
 
+    private Long id;
     private String street;
     private String streetNumber;
     private String postalCode;
@@ -17,8 +18,11 @@ public class RepairForm {
     private double cost;
     private User user;
 
-    public RepairForm(){}
-    public RepairForm(String street, String streetNumber, String postalCode, String city, Date dateTime, String description, String status, String category, double cost, User user) {
+    public RepairForm() {
+    }
+
+    public RepairForm(Long id, String street, String streetNumber, String postalCode, String city, Date dateTime, String description, String status, String category, double cost, User user) {
+        this.id = id;
         this.street = street;
         this.streetNumber = streetNumber;
         this.postalCode = postalCode;
@@ -29,6 +33,14 @@ public class RepairForm {
         this.category = category;
         this.cost = cost;
         this.user = user;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getStreet() {
