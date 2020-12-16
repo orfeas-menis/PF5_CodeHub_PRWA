@@ -8,10 +8,11 @@ import org.springframework.validation.Validator;
 import pf5.codehub.team5.webapp.form.UserForm;
 import pf5.codehub.team5.webapp.model.UserModel;
 import pf5.codehub.team5.webapp.service.UserService;
+
 import java.util.Optional;
 
 @Component
-public class UserCreateValidator implements Validator {
+public class UserEditValidator implements Validator {
 
     @Autowired
     private UserService userService;
@@ -27,11 +28,15 @@ public class UserCreateValidator implements Validator {
         //Check if already exists user with the provided email or VAT
         Optional<UserModel> usersWithGivenEmail = userService.findByEmail(userForm.getEmail());
         if (usersWithGivenEmail.isPresent()) {
-            errors.rejectValue("email", "register.email.taken.error");
+            if (usersWithGivenEmail.get().getId() != userForm.getId()){
+                errors.rejectValue("email", "register.email.taken.error");
+            }
         }
         Optional<UserModel> usersWithGivenVat = userService.findByVat(userForm.getVat());
         if (usersWithGivenVat.isPresent()) {
-            errors.rejectValue("vat", "register.vat.taken.error");
+            if (usersWithGivenVat.get().getId() != userForm.getId()){
+                errors.rejectValue("vat", "register.vat.taken.error");
+            }
         }
         //We only accept postal codes that consist of exactly 5 digits
         String postalCodeRegex = "\\b\\d{5}\\b";

@@ -14,6 +14,7 @@ import pf5.codehub.team5.webapp.form.UserForm;
 import pf5.codehub.team5.webapp.model.UserModel;
 import pf5.codehub.team5.webapp.service.UserServiceImpl;
 import pf5.codehub.team5.webapp.validators.UserCreateValidator;
+import pf5.codehub.team5.webapp.validators.UserEditValidator;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -32,8 +33,13 @@ public class OwnerController {
     private static final String ERROR_MESSAGE = "errorMessage";
 
     @InitBinder(CREATE_FORM)
-    protected void initBinder(final WebDataBinder binder) {
+    protected void initBinderCreate(final WebDataBinder binder) {
         binder.addValidators(userCreateValidator);
+    }
+
+    @InitBinder(EDIT_FORM)
+    protected void initBinderEdit(final WebDataBinder binder) {
+        binder.addValidators(userEditValidator);
     }
 
     @Autowired
@@ -41,6 +47,9 @@ public class OwnerController {
 
     @Autowired
     private UserCreateValidator userCreateValidator;
+
+    @Autowired
+    private UserEditValidator userEditValidator;
 
     @GetMapping(path = "/owner")
     public String ownerTab(Model model) {
@@ -68,29 +77,35 @@ public class OwnerController {
         return "search-email";
     }
 
-//    @GetMapping( "/owner/{id}/edit")
-//    public String editUser(@PathVariable Long id, Model model) {
-//        UserModel userModel = userService.findById(id).get();
-//        model.addAttribute(USER, userModel);
-//        model.addAttribute(USER_ROLES, UserRole.values());
-//        model.addAttribute(PROPERTY_TYPES, PropertyType.values());
-//        return "user_edit";
-//    }
-
     @GetMapping( "/owner/{id}/edit")
     public String editUser(@PathVariable Long id, Model model) {
-        UserModel userModel = userService.findById(id).get();
-        model.addAttribute(USER, userModel);
-        model.addAttribute(USER_ROLES, UserRole.values());
-        model.addAttribute(PROPERTY_TYPES, PropertyType.values());
+        Optional<UserModel> optModel = userService.findById(id);
+        if (optModel.isPresent()){
+            UserModel userModel = optModel.get();
+            model.addAttribute(USER, userModel);
+            model.addAttribute(USER_ROLES, UserRole.values());
+            model.addAttribute(PROPERTY_TYPES, PropertyType.values());
+        }
+        else{
+            model.addAttribute(ERROR_MESSAGE, "user does not exist");
+            return "redirect:/owner";
+        }
         return "user_edit";
     }
 
     @PostMapping(value = "/owner/edit")
     public String editUser(Model model,
-                           @ModelAttribute(EDIT_FORM) UserForm userForm,
+                           @Valid @ModelAttribute(EDIT_FORM) UserForm userForm,
                            BindingResult bindingResult,
                            RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            //have some error handling here, perhaps add extra error messages to the model
+            model.addAttribute(ERROR_MESSAGE, "validation errors occurred");
+            if (userForm.getId() != null){ return "redirect:/owner/" + userForm.getId().toString() + "/edit";}
+            else{
+                return "redirect:/owner";
+            }
+        }
         UserModel userModel = userService.updateUser(userForm);
         return "redirect:/owner";
     }
@@ -129,8 +144,5 @@ public class OwnerController {
         //we have to see what happens with password
         return "redirect:/owner";
     }
-
-
-
 
 }

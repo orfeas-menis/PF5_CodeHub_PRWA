@@ -13,7 +13,6 @@
 
 <div class="container-fluid">
     <div class="row">
-
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="row">
                 <div class="col-md-12 order-md-1">
@@ -25,7 +24,7 @@
 </div>
 
 <#include "partials/scripts.ftlh">
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 </body>
 </html>
 
