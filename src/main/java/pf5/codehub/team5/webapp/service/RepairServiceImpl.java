@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pf5.codehub.team5.webapp.domain.Repair;
 import pf5.codehub.team5.webapp.domain.User;
+import pf5.codehub.team5.webapp.form.RepairForm;
+import pf5.codehub.team5.webapp.mappers.RepairFormToRepairMapper;
+import pf5.codehub.team5.webapp.mappers.RepairToRepairFormMapper;
 import pf5.codehub.team5.webapp.mappers.RepairToRepairModelMapper;
 import pf5.codehub.team5.webapp.model.RepairModel;
 import pf5.codehub.team5.webapp.repository.RepairRepository;
@@ -21,6 +24,12 @@ public class RepairServiceImpl implements  RepairService{
 
     @Autowired
     private RepairToRepairModelMapper repairModelMapper;
+
+    @Autowired
+    private RepairToRepairFormMapper repairFormMapper;
+
+    @Autowired
+    private RepairFormToRepairMapper repairMapper;
 
     @Override
     public Optional<RepairModel> findRepair(Long id){
@@ -59,6 +68,15 @@ public class RepairServiceImpl implements  RepairService{
     @Override
     public List<Repair> findByUser(User user){
         return repairRepository.findByUser(user);
+    }
+
+
+    @Override
+    public RepairModel createRepair(RepairForm repairForm) {
+
+        Repair repair = repairMapper.map(repairForm);
+        Repair newRepair = repairRepository.save(repair);
+        return repairModelMapper.map(newRepair);
     }
 
 }

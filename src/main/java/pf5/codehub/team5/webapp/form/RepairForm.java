@@ -1,8 +1,6 @@
 package pf5.codehub.team5.webapp.form;
 
 import pf5.codehub.team5.webapp.domain.User;
-import pf5.codehub.team5.webapp.enums.Category;
-import pf5.codehub.team5.webapp.enums.Status;
 
 import java.util.Date;
 
@@ -14,13 +12,13 @@ public class RepairForm {
     private String city;
     private Date dateTime;
     private String description;
-    private Status status;
-    private Category category;
+    private String status;
+    private String category;
     private double cost;
     private User user;
 
     public RepairForm(){}
-    public RepairForm(String street, String streetNumber, String postalCode, String city, Date dateTime, String description, Status status, Category category, double cost, User user) {
+    public RepairForm(String street, String streetNumber, String postalCode, String city, Date dateTime, String description, String status, String category, double cost, User user) {
         this.street = street;
         this.streetNumber = streetNumber;
         this.postalCode = postalCode;
@@ -81,19 +79,19 @@ public class RepairForm {
         this.description = description;
     }
 
-    public Status getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 
