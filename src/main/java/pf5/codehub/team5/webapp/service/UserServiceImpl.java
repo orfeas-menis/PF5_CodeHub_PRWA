@@ -93,6 +93,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserModel createUser(UserForm userForm) {
+
         User user = userMapper.map(userForm);
         User newUser = userRepository.save(user);
         return userModelMapper.map(newUser);
