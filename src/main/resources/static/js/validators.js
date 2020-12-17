@@ -1,19 +1,13 @@
 (function () {
     $('#add-book').validate({
         rules: {
-            title: {
-                required: true
-            },
-            year: {
+            vat: {
                 required: true
             }
         },
         messages: {
             title: {
-                required: 'Please add a title.'
-            },
-            year: {
-                required: 'Please pick a year.'
+                required: 'Please add user vat.'
             }
         }
     });

@@ -10,6 +10,7 @@
 <body>
 
 <#include "partials/navbar.ftlh">
+
 <div class="container-fluid">
     <div class="row">
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
@@ -24,7 +25,7 @@
 
 <#include "partials/script.ftlh">
 <#include "partials/script-datepicker.ftlh">
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 </body>
 </html>
 

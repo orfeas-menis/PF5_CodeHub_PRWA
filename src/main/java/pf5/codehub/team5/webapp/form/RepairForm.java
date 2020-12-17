@@ -11,17 +11,17 @@ public class RepairForm {
     private String streetNumber;
     private String postalCode;
     private String city;
-    private Date dateTime;
+    private String dateTime;
     private String description;
     private String status;
     private String category;
-    private double cost;
-    private User user;
+    private String cost;
+    private String vat;
 
     public RepairForm() {
     }
 
-    public RepairForm(Long id, String street, String streetNumber, String postalCode, String city, Date dateTime, String description, String status, String category, double cost, User user) {
+    public RepairForm(Long id, String street, String streetNumber, String postalCode, String city, String dateTime, String description, String status, String category, String cost, String vat) {
         this.id = id;
         this.street = street;
         this.streetNumber = streetNumber;
@@ -32,7 +32,7 @@ public class RepairForm {
         this.status = status;
         this.category = category;
         this.cost = cost;
-        this.user = user;
+        this.vat = vat;
     }
 
     public Long getId() {
@@ -75,11 +75,11 @@ public class RepairForm {
         this.city = city;
     }
 
-    public Date getDateTime() {
+    public String getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(Date dateTime) {
+    public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
     }
 
@@ -107,19 +107,19 @@ public class RepairForm {
         this.category = category;
     }
 
-    public double getCost() {
+    public String getCost() {
         return cost;
     }
 
-    public void setCost(double cost) {
+    public void setCost(String cost) {
         this.cost = cost;
     }
 
-    public User getUser() {
-        return user;
+    public String getVat() {
+        return vat;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setVat(String vat) {
+        this.vat = vat;
     }
 }

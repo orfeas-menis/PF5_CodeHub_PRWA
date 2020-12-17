@@ -7,12 +7,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import pf5.codehub.team5.webapp.domain.User;
 import pf5.codehub.team5.webapp.enums.PropertyType;
 import pf5.codehub.team5.webapp.enums.UserRole;
 import pf5.codehub.team5.webapp.form.UserForm;
 import pf5.codehub.team5.webapp.model.UserModel;
-import pf5.codehub.team5.webapp.service.UserServiceImpl;
+import pf5.codehub.team5.webapp.service.UserService;
 import pf5.codehub.team5.webapp.validators.UserCreateValidator;
 import pf5.codehub.team5.webapp.validators.UserEditValidator;
 
@@ -43,7 +42,7 @@ public class OwnerController {
     }
 
     @Autowired
-    private UserServiceImpl userService;
+    private UserService userService;
 
     @Autowired
     private UserCreateValidator userCreateValidator;

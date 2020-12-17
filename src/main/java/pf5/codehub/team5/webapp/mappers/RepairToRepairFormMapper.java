@@ -13,12 +13,12 @@ public class RepairToRepairFormMapper {
         repairForm.setStreetNumber(repair.getStreetNumber());
         repairForm.setPostalCode(repair.getPostalCode());
         repairForm.setCity(repair.getCity());
-        repairForm.setDateTime(repair.getDateTime());
+        repairForm.setDateTime(repair.getDateTime().toString());
         repairForm.setDescription(repair.getDescription());
         repairForm.setStatus(repair.getStatus().name());
         repairForm.setCategory(repair.getCategory().name());
-        repairForm.setCost(repair.getCost());
-        repairForm.setUser(repair.getUser());
+        repairForm.setCost(Double.toString(repair.getCost()));
+        repairForm.setVat(repair.getUser().getVat());
         repairForm.setId(repair.getId());
 
         return repairForm;

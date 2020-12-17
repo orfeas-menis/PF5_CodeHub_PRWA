@@ -1,14 +1,23 @@
 package pf5.codehub.team5.webapp.mappers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pf5.codehub.team5.webapp.domain.Repair;
+import pf5.codehub.team5.webapp.domain.User;
 import pf5.codehub.team5.webapp.enums.Category;
 import pf5.codehub.team5.webapp.enums.Status;
 import pf5.codehub.team5.webapp.form.RepairForm;
+import pf5.codehub.team5.webapp.repository.UserRepository;
+
+import javax.persistence.Access;
+import java.sql.Date;
+import java.util.Optional;
 
 @Component
 public class RepairFormToRepairMapper {
 
+    @Autowired
+    UserRepository userRepository;
 
     public Repair map(RepairForm repairForm) {
         Repair repair = new Repair();
@@ -16,12 +25,20 @@ public class RepairFormToRepairMapper {
         repair.setPostalCode(repairForm.getPostalCode());
         repair.setStreet(repairForm.getStreet());
         repair.setStreetNumber(repairForm.getStreetNumber());
-        repair.setDateTime(repairForm.getDateTime());
+        repair.setDateTime(Date.valueOf(repairForm.getDateTime()));
         repair.setDescription(repairForm.getDescription());
         repair.setStatus(Status.valueOf(repairForm.getStatus()));
         repair.setCategory(Category.valueOf(repairForm.getCategory()));
-        repair.setCost(repairForm.getCost());
-        repair.setUser(repairForm.getUser());
+        boolean numeric = true;
+        try {
+            Double num = Double.parseDouble(repairForm.getCost());
+        } catch (NumberFormatException e) {
+            numeric = false;
+        }
+        if (numeric)
+        repair.setCost(Double.parseDouble(repairForm.getCost()));
+        Optional<User> user = userRepository.findByVat(repairForm.getVat());
+        if (user.isPresent()) repair.setUser(user.get());
         if (repairForm.getId() != null){
             repair.setId(repairForm.getId());
         }

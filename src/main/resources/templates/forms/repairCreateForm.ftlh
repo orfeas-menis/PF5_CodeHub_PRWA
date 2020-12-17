@@ -5,9 +5,9 @@
 <form id="createForm" action="/repair/create" method="post">
 
     <div class="mb-3">
-        <label for="user">User</label>
+        <label for="vat">User VAT</label>
         <div class="input-group">
-            <input type="text" class="form-control" id="user" name="user">
+            <input type="text" class="form-control" id="vat" name="vat">
         </div>
     </div>
 
@@ -34,9 +34,9 @@
     </div>
 
     <div class="mb-3">
-        <label for="number">Number</label>
+        <label for="streetNumber">Number</label>
         <div class="input-group">
-            <input type="text" class="form-control" id="number" name="number">
+            <input type="text" class="form-control" id="streetNumber" name="streetNumber">
         </div>
     </div>
 
@@ -81,7 +81,7 @@
                 <div class="input-group-prepend">
                         <span class="input-group-text"><span data-feather="calendar"></span></span>
                 </div>
-                    <input type="text" class="form-control" id="datepicker" name="publicationDate">
+                    <input type="text" class="form-control" id="datepicker" name="dateTime">
                 </div>
            </div>
 

@@ -7,11 +7,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pf5.codehub.team5.webapp.enums.Category;
 import pf5.codehub.team5.webapp.enums.Status;
 import pf5.codehub.team5.webapp.form.RepairForm;
 import pf5.codehub.team5.webapp.model.RepairModel;
-import pf5.codehub.team5.webapp.service.RepairServiceImpl;
+import pf5.codehub.team5.webapp.service.RepairService;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -21,40 +22,40 @@ import static pf5.codehub.team5.webapp.utils.GlobalAttributes.ERROR_MESSAGE;
 @Controller
 public class RepairController {
     private static final String REPAIRS_LIST = "repairs";
-    private static final String REPAIR_FORM= "repairForm";
-    private static final String CATEGORIES= "categories";
-    private static final String STATUSES= "statuses";
+    private static final String REPAIR_FORM = "repairForm";
+    private static final String CATEGORIES = "categories";
+    private static final String STATUSES = "statuses";
 
     @Autowired
-    private RepairServiceImpl repairService;
+    private RepairService repairService;
 
     @GetMapping(path = "/repair")
     public String repairHome(Model model) {
         List<RepairModel> repairs = repairService.findFirst10();
-        model.addAttribute(REPAIRS_LIST,repairs);
+        model.addAttribute(REPAIRS_LIST, repairs);
 
         return "repair";
     }
 
-    @GetMapping( "/repair/create")
+    @GetMapping("/repair/create")
     public String repairCreateGet(Model model) {
         model.addAttribute(REPAIR_FORM, new RepairForm());
         model.addAttribute(CATEGORIES, Category.values());
         model.addAttribute(STATUSES, Status.values());
-
         return "repairCreate";
     }
 
     @PostMapping(value = "/repair/create")
-    public String createRepairsPost(Model model, @Valid @ModelAttribute(REPAIR_FORM) RepairForm repairForm,
-                              BindingResult bindingResult) {
-
+    public String repairCreate(Model model,
+                               @Valid @ModelAttribute(REPAIR_FORM) RepairForm repairForm,
+                               BindingResult bindingResult,
+                               RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             //have some error handling here, perhaps add extra error messages to the model
             model.addAttribute(ERROR_MESSAGE, "an error occurred");
             return "repairCreate";
         }
-        repairService.createRepair(repairForm);
+        RepairModel repairModel = repairService.createRepair(repairForm);
         return "redirect:/repair";
     }
 

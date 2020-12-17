@@ -2,7 +2,7 @@
     const dateField = $('#year');
 
     dateField.datepicker({
-        format: 'yyyy'
+        format: 'yyyy-mm-dd'
     });
 
 })();
