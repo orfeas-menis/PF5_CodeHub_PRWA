@@ -21,6 +21,6 @@ public interface UserService {
     UserModel createUser(UserForm userForm);
     Optional<UserForm> findUserForm(Long id);
     UserModel updateUser(UserForm userForm);
-    void deleteById(Long id);
+    String deleteById(Long id);
     List<UserModel> findFirst10();
 }

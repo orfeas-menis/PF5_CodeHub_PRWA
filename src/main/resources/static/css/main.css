@@ -1,0 +1,15 @@
+.hello-title{
+    color: darkgreen;
+}
+
+.error {
+    color: #dc3545;
+}
+
+.nav-link:hover {
+    color: #007bff;
+}
+
+.nav-link:focus {
+    color: #007bff;
+}

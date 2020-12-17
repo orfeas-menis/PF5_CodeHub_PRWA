@@ -112,8 +112,8 @@ public class OwnerController {
 
 
     @PostMapping("/owner/{id}/delete")
-    public String ownerEdit(@PathVariable Long id) {
-        userService.deleteById(id);
+    public String deleteUser(@PathVariable Long id) {
+        String response = userService.deleteById(id);
         return "redirect:/owner";
     }
 

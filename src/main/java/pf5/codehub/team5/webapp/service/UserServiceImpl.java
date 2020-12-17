@@ -8,6 +8,7 @@ import pf5.codehub.team5.webapp.mappers.UserFormToUserMapper;
 import pf5.codehub.team5.webapp.mappers.UserToUserFormMapper;
 import pf5.codehub.team5.webapp.mappers.UserToUserModelMapper;
 import pf5.codehub.team5.webapp.model.UserModel;
+import pf5.codehub.team5.webapp.repository.RepairRepository;
 import pf5.codehub.team5.webapp.repository.UserRepository;
 
 import java.util.List;
@@ -19,6 +20,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private RepairRepository repairRepository;
 
     @Autowired
     private UserToUserModelMapper userModelMapper;
@@ -109,8 +113,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteById(Long id) {
-        if (userRepository.findById(id).isPresent()) userRepository.deleteById(id);
+    public String deleteById(Long id) {
+        Optional<User> user = userRepository.findById(id);
+        if (user.isPresent()) {
+            if (repairRepository.findByUser(user.get()).isEmpty()) {
+                userRepository.deleteById(id);
+                return "OK";
+            }
+            else{
+                return "User has repairs";
+            }
+        }
+        else{
+            return "User does not exist";
+        }
     }
-
 }

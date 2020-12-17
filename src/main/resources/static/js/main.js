@@ -1,7 +1,7 @@
 feather.replace();
 
 (function () {
-    console.log("Hello World!");
+    console.log("You are in main.js!");
 })();
 
 // Date format
@@ -51,9 +51,9 @@ jQuery(function ($) {
 
     $('#modal').on('show.bs.modal', function (event) {
         const id = event.relatedTarget.dataset.id;
-        $('#deleteForm').attr('action', `/books/${id}/delete`);
+        $('#deleteForm').attr('action', `/owner/${id}/delete`);
         $('.modal-title').text(function () {
-            return `Book #${id}`;
+            return `User #${id}`;
         });
     });
 });
