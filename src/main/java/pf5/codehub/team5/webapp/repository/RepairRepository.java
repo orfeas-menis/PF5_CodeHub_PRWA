@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import pf5.codehub.team5.webapp.domain.Repair;
 import pf5.codehub.team5.webapp.domain.User;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +14,7 @@ import java.util.Optional;
 @Repository
 public interface RepairRepository extends JpaRepository<Repair, Long> {
 
-    List<Repair> findByDateTime(Date date);
+    List<Repair> findByDateTime(LocalDate date);
 
     Optional<Repair> findById(Long id);
 

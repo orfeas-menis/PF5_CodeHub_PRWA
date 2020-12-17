@@ -52,7 +52,7 @@ public class RepairServiceImpl implements  RepairService{
     }
 
     @Override
-    public List<RepairModel> findByDateTime(Date date) {
+    public List<RepairModel> findByDateTime(LocalDate date) {
         return repairRepository
                 .findByDateTime(date)
                 .stream()
@@ -63,9 +63,7 @@ public class RepairServiceImpl implements  RepairService{
     @Override
     public List<RepairModel> findTodayActiveRepairs(){
         return repairRepository
-                .findByDateTime(Date.from(LocalDate.now().atStartOfDay()
-                        .atZone(ZoneId.systemDefault())
-                        .toInstant()))
+                .findByDateTime(LocalDate.now())
                 .stream()
                 .filter(repair -> repair.getStatus() == Status.INPROGRESS)
                 .map(repair -> repairModelMapper.map(repair))
@@ -101,4 +99,15 @@ public class RepairServiceImpl implements  RepairService{
         return repairModelMapper.map(newRepair);
     }
 
+    @Override
+    public String deleteById(Long id) {
+        Optional<Repair> repair = repairRepository.findById(id);
+        if (repair.isPresent()) {
+            repairRepository.deleteById(id);
+            return "OK";
+        }
+        else{
+            return "User does not exist";
+        }
+    }
 }

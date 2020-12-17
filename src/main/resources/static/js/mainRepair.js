@@ -51,10 +51,9 @@ jQuery(function ($) {
 
     $('#modal').on('show.bs.modal', function (event) {
         const id = event.relatedTarget.dataset.id;
-        $('#deleteForm').attr('action', `/owner/${id}/delete`);
+        $('#deleteRepairForm').attr('action', `/repair/${id}/delete`);
         $('.modal-title').text(function () {
             return `Element #${id}`;
         });
     });
-
 });

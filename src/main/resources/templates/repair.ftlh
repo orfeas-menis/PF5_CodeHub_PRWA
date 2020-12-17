@@ -64,10 +64,10 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <p>Are you sure you want to delete this user?</p>
+                                <p>Are you sure you want to delete this repair?</p>
                             </div>
                             <div class="modal-footer">
-                                <form method="post" id="deleteForm">
+                                <form method="post" id="deleteRepairForm">
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                 </form>
@@ -82,5 +82,6 @@
 </div>
 
 <#include "partials/script.ftlh">
+<script src="/js/mainRepair.js"></script>
 </body>
 </html>

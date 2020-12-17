@@ -110,11 +110,10 @@ public class RepairController {
         RepairModel repairModel = repairService.updateRepair(repairForm);
         return "redirect:/repair";
     }
-//
-//
-//    @PostMapping("/owner/{id}/delete")
-//    public String deleteUser(@PathVariable Long id) {
-//        String response = userService.deleteById(id);
-//        return "redirect:/owner";
-//    }
+
+    @PostMapping("/repair/{id}/delete")
+    public String deleteRepair(@PathVariable Long id) {
+        String response = repairService.deleteById(id);
+        return "redirect:/repair";
+    }
 }
