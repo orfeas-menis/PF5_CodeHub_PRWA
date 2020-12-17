@@ -1,9 +1,11 @@
 package pf5.codehub.team5.webapp.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import pf5.codehub.team5.webapp.enums.Category;
 import pf5.codehub.team5.webapp.enums.Status;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -33,7 +35,8 @@ public class Repair {
     private String city;
 
     @Column(name = "date_time", length = MAX_LENGTH_SHORT)
-    private Date dateTime;
+    @DateTimeFormat
+    private LocalDate dateTime;
 
     @Column(name = "description", length = MAX_LENGTH_LONG)
     private String description;
@@ -56,7 +59,8 @@ public class Repair {
     public Repair(){
 
     }
-    public Repair(Long id, String street, String streetNumber, String postalCode, String city, Date dateTime, String description, Status status, Category category, double cost, User user) {
+
+    public Repair(Long id, String street, String streetNumber, String postalCode, String city, LocalDate dateTime, String description, Status status, Category category, double cost, User user) {
         this.id = id;
         this.street = street;
         this.streetNumber = streetNumber;
@@ -110,11 +114,11 @@ public class Repair {
         this.city = city;
     }
 
-    public Date getDateTime() {
+    public LocalDate getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(Date dateTime) {
+    public void setDateTime(LocalDate dateTime) {
         this.dateTime = dateTime;
     }
 

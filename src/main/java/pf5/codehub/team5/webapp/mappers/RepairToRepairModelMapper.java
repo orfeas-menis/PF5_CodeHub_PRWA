@@ -11,12 +11,14 @@ public class RepairToRepairModelMapper {
         repairModel.setCategory(repair.getCategory());
         repairModel.setCity(repair.getCity());
         repairModel.setCost(repair.getCost());
-        repairModel.setDateTime(repair.getDateTime());
+        repairModel.setDateTime(repair.getDateTime().toString());
         repairModel.setDescription(repair.getDescription());
         repairModel.setPostalCode(repair.getPostalCode());
         repairModel.setStatus(repair.getStatus());
         repairModel.setStreet(repair.getStreet());
         repairModel.setStreetNumber(repair.getStreetNumber());
+        repairModel.setUserVat(repair.getUser().getVat());
+        repairModel.setId(repair.getId());
         return repairModel;
     }
 }

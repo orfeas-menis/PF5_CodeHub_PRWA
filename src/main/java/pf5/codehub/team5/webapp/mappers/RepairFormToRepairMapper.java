@@ -11,6 +11,8 @@ import pf5.codehub.team5.webapp.repository.UserRepository;
 
 import javax.persistence.Access;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 @Component
@@ -25,7 +27,7 @@ public class RepairFormToRepairMapper {
         repair.setPostalCode(repairForm.getPostalCode());
         repair.setStreet(repairForm.getStreet());
         repair.setStreetNumber(repairForm.getStreetNumber());
-        repair.setDateTime(Date.valueOf(repairForm.getDateTime()));
+        repair.setDateTime(parseLocalDateFromString(repairForm.getDateTime()));
         repair.setDescription(repairForm.getDescription());
         repair.setStatus(Status.valueOf(repairForm.getStatus()));
         repair.setCategory(Category.valueOf(repairForm.getCategory()));
@@ -45,4 +47,8 @@ public class RepairFormToRepairMapper {
         return repair;
     }
 
+    private LocalDate parseLocalDateFromString(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); //ex: '1939-01-01'
+        return LocalDate.parse(date, formatter);
+    }
 }

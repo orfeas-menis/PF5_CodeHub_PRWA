@@ -36,7 +36,7 @@ public class RepairServiceImpl implements  RepairService{
     private RepairFormToRepairMapper repairMapper;
 
     @Override
-    public Optional<RepairModel> findRepair(Long id){
+    public Optional<RepairModel> findById(Long id){
         return repairRepository
                 .findById(id)
                 .map(repair -> repairModelMapper.map(repair));
@@ -80,7 +80,6 @@ public class RepairServiceImpl implements  RepairService{
 
     @Override
     public RepairModel createRepair(RepairForm repairForm) {
-
         Repair repair = repairMapper.map(repairForm);
         Repair newRepair = repairRepository.save(repair);
         return repairModelMapper.map(newRepair);
@@ -93,6 +92,13 @@ public class RepairServiceImpl implements  RepairService{
                 .stream()
                 .map(repair -> repairModelMapper.map(repair))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public RepairModel updateRepair(RepairForm repairForm){
+        Repair repair = repairMapper.map(repairForm);
+        Repair newRepair = repairRepository.save(repair);
+        return repairModelMapper.map(newRepair);
     }
 
 }

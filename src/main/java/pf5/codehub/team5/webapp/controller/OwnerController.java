@@ -91,7 +91,7 @@ public class OwnerController {
         return "user_edit";
     }
 
-    @PostMapping(value = "/owner/edit")
+    @PostMapping(value = "/repair/edit")
     public String editUser(Model model,
                            @Valid @ModelAttribute(EDIT_FORM) UserForm userForm,
                            BindingResult bindingResult,

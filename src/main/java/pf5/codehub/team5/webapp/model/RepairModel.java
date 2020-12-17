@@ -6,6 +6,7 @@ import pf5.codehub.team5.webapp.enums.Category;
 import pf5.codehub.team5.webapp.enums.Status;
 
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class RepairModel {
@@ -14,14 +15,29 @@ public class RepairModel {
     private String streetNumber;
     private String postalCode;
     private String city;
-    private Date dateTime;
+    private String dateTime;
     private String description;
     private Status status;
     private Category category;
     private double cost;
-    private User user;
+    private String userVat;
 
     public RepairModel(){}
+
+    public RepairModel(Long id, String street, String streetNumber, String postalCode, String city, String dateTime, String description, Status status, Category category, double cost, String userVat) {
+        this.id = id;
+        this.street = street;
+        this.streetNumber = streetNumber;
+        this.postalCode = postalCode;
+        this.city = city;
+        this.dateTime = dateTime;
+        this.description = description;
+        this.status = status;
+        this.category = category;
+        this.cost = cost;
+        this.userVat = userVat;
+    }
+
     public Long getId() {
         return id;
     }
@@ -62,11 +78,11 @@ public class RepairModel {
         this.city = city;
     }
 
-    public Date getDateTime() {
+    public String getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(Date dateTime) {
+    public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
     }
 
@@ -102,11 +118,11 @@ public class RepairModel {
         this.cost = cost;
     }
 
-    public User getUser() {
-        return user;
+    public String getUserVat() {
+        return userVat;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserVat(String userVat) {
+        this.userVat = userVat;
     }
 }
