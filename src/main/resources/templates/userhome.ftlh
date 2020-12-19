@@ -13,6 +13,22 @@
     <body>
 
 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav justify-content-between w-25">
+
+            </ul>
+          </div>
+           <form class="form-inline my-2 my-lg-0" action="/logout">
+                    <button  class="btn btn-danger" type="submit">Log Out</button>
+           </form>
+        </nav>
+
+
+
+
+
             <div class="container pt-4">
                       <table class="table">
                           <thead>
@@ -39,7 +55,7 @@
 
 
 
-             <#include "partials/scripts.ftlh">
+        <#include "partials/scripts.ftlh">
 
     </body>
 
