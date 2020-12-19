@@ -24,14 +24,21 @@ public class UserCreateValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         UserForm userForm = (UserForm) target;
-        //Check if already exists user with the provided email or VAT
+        // Check if there already exists a user with the same email or VAT
+        // Also check if the provided values are valid
+        String emailRegex= "\\b[\\w\\.-]+@[\\w\\.-]+\\.\\w{2,4}\\b";
         Optional<UserModel> usersWithGivenEmail = userService.findByEmail(userForm.getEmail());
         if (usersWithGivenEmail.isPresent()) {
             errors.rejectValue("email", "register.email.taken.error");
+        } else if (userForm.getEmail().matches(emailRegex)){
+            errors.rejectValue("email", "register.email.pattern.invalid");
         }
+        String vatRegex = "\\b\\d{9}\\b";
         Optional<UserModel> usersWithGivenVat = userService.findByVat(userForm.getVat());
         if (usersWithGivenVat.isPresent()) {
             errors.rejectValue("vat", "register.vat.taken.error");
+        } else if (userForm.getVat().matches(vatRegex)) {
+            errors.rejectValue("vat", "register.vat.format.error");
         }
         //We only accept postal codes that consist of exactly 5 digits
         String postalCodeRegex = "\\b\\d{5}\\b";
@@ -47,11 +54,6 @@ public class UserCreateValidator implements Validator {
         String streetNumberRegex = "^\\d*$";
         if (!userForm.getStreetNumber().matches(streetNumberRegex)){
             errors.rejectValue("streetNumber", "register.streetNumber.format.error");
-        }
-        //We only accept VAT numbers that are consist of exactly 9 digits
-        String vatRegex = "\\b\\d{9}\\b";
-        if (!userForm.getVat().matches(vatRegex)){
-            errors.rejectValue("vat", "register.vat.format.error");
         }
         // Or use reject if empty or whitespace
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "register.name.not.null");
