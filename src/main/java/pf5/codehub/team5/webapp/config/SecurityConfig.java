@@ -63,6 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/js/**").permitAll()
                 .antMatchers("login").anonymous()
                 .antMatchers("/admin/**").hasAuthority("ADMIN")
+                .antMatchers("/user").hasAuthority(("OWNER"))
                 .anyRequest().authenticated() // for any other request, you just need to be logged in
 
                 //ERROR HANDLING FOR ACCESS DENIED

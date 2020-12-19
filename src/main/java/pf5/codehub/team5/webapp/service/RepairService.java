@@ -24,5 +24,5 @@ public interface RepairService {
     RepairModel createRepair(RepairForm repairForm);
     RepairModel updateRepair(RepairForm repairForm);
     String deleteById(Long id);
-
+    List<Repair> findByUserId(Long id);
 }

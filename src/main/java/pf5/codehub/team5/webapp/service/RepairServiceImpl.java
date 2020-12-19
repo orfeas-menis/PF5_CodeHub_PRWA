@@ -12,6 +12,7 @@ import pf5.codehub.team5.webapp.mappers.RepairToRepairModelMapper;
 import pf5.codehub.team5.webapp.model.RepairModel;
 import pf5.codehub.team5.webapp.model.UserModel;
 import pf5.codehub.team5.webapp.repository.RepairRepository;
+import pf5.codehub.team5.webapp.repository.UserRepository;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -25,6 +26,9 @@ public class RepairServiceImpl implements  RepairService{
 
     @Autowired
     private RepairRepository repairRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private RepairToRepairModelMapper repairModelMapper;
@@ -73,6 +77,18 @@ public class RepairServiceImpl implements  RepairService{
     @Override
     public List<Repair> findByUser(User user){
         return repairRepository.findByUser(user);
+    }
+
+    @Override
+    public List<Repair> findByUserId(Long id){
+        Optional<User> optUser = userRepository.findById(id);
+        if (optUser.isPresent()){
+            return repairRepository.findByUser(optUser.get());
+        }
+        else{
+            //Through Exception if the user does not exist
+            return repairRepository.findByUser(optUser.get());
+        }
     }
 
 

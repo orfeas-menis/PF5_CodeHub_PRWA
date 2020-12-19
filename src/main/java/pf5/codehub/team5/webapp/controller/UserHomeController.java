@@ -1,12 +1,14 @@
 package pf5.codehub.team5.webapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import pf5.codehub.team5.webapp.domain.Repair;
 import pf5.codehub.team5.webapp.domain.User;
 import pf5.codehub.team5.webapp.model.RepairModel;
+import pf5.codehub.team5.webapp.model.UserModel;
 import pf5.codehub.team5.webapp.service.RepairServiceImpl;
 import pf5.codehub.team5.webapp.service.UserServiceImpl;
 
@@ -28,8 +30,8 @@ public class UserHomeController {
 
     @GetMapping(path = "/user")
     public String userHome(Model model) {
-        Optional<User> user = userService.findUser(1L);
-        List<Repair> repairs = repairService.findByUser(user.get());
+        Optional<UserModel> user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        List<Repair> repairs = repairService.findByUserId(user.get().getId());
         model.addAttribute(REPAIRS_LIST,repairs);
         return "userhome";
     }
