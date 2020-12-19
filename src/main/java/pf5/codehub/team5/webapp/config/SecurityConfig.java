@@ -1,6 +1,8 @@
 package pf5.codehub.team5.webapp.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -65,6 +67,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasAuthority("ADMIN")
                 .antMatchers("/user").hasAuthority(("OWNER"))
                 .anyRequest().authenticated() // for any other request, you just need to be logged in
+
+                //.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 
                 //ERROR HANDLING FOR ACCESS DENIED
                 .and()

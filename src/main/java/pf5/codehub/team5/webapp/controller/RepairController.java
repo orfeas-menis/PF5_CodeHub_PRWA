@@ -18,6 +18,7 @@ import pf5.codehub.team5.webapp.model.UserModel;
 import pf5.codehub.team5.webapp.service.RepairService;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,6 +37,24 @@ public class RepairController {
 
     @Autowired
     private RepairService repairService;
+
+    @PostMapping(path = "/admin/repair/search-vat")
+    public String searchPostVat(Model model, @RequestParam String parameter) {
+        List<RepairModel> repairs = repairService.findByVat(parameter);
+
+        model.addAttribute(REPAIRS_LIST, repairs);
+
+        return "repair";
+    }
+
+    @PostMapping(path = "/admin/repair/search-date")
+    public String searchPostDate(Model model, @RequestParam String dateTime) {
+        List<RepairModel> repairs = repairService.findByDateTime(dateTime);
+
+        model.addAttribute(REPAIRS_LIST, repairs);
+
+        return "repair";
+    }
 
 //        @InitBinder(REPAIR_FORM)
 //    protected void initBinder(final WebDataBinder binder) {

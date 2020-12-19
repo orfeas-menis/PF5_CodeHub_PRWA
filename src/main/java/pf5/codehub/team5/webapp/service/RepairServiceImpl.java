@@ -40,6 +40,24 @@ public class RepairServiceImpl implements  RepairService{
     private RepairFormToRepairMapper repairMapper;
 
     @Override
+    public List<RepairModel> findByVat(String vat) {
+        Optional<User> user = userRepository.findByVat(vat);
+        if (user.isPresent()) {
+            return repairRepository
+                    .findByUser(user.get())
+                    .stream()
+                    .map(repair -> repairModelMapper.map(repair))
+                    .collect(Collectors.toList());
+        } else {
+            return repairRepository
+                    .findByUser(user.get())
+                    .stream()
+                    .map(repair -> repairModelMapper.map(repair))
+                    .collect(Collectors.toList());
+        }
+    }
+
+    @Override
     public Optional<RepairModel> findById(Long id){
         return repairRepository
                 .findById(id)
@@ -56,9 +74,9 @@ public class RepairServiceImpl implements  RepairService{
     }
 
     @Override
-    public List<RepairModel> findByDateTime(LocalDate date) {
+    public List<RepairModel> findByDateTime(String date) {
         return repairRepository
-                .findByDateTime(date)
+                .findByDateTime(LocalDate.parse(date))
                 .stream()
                 .map(repair -> repairModelMapper.map(repair))
                 .collect(Collectors.toList());

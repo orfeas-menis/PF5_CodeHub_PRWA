@@ -25,7 +25,7 @@
 
 <#include "partials/script.ftlh">
 <#include "partials/script-datepicker.ftlh">
-<script src="/js/maiRepair.js"></script>
+<script src="/js/mainRepair.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 </body>
 </html>

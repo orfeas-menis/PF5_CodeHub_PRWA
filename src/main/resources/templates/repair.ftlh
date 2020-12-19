@@ -11,7 +11,34 @@
 <div class="container-fluid">
     <div class="row">
         <main role="main" class="ml-sm-auto col-lg-12 pt-3 px-4">
-            <h3 class="mb-3">Users</h3>
+
+         <form id="searchByAfmOrDateForm" class="form-inline my-2 my-lg-0" method="post" action="/admin/repair/search-vat">
+
+                        <input class="form-control mr-sm-2" type="search" placeholder="Give a VAT" aria-label="Search"
+                               name="parameter">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+         </form>
+
+         <form id="DateForm" class="form-inline my-2 my-lg-0" method="post" action="/admin/repair/search-date">
+
+
+
+                                    <label for="datepicker">  </label>
+
+                                          <div class="input-group">
+                                               <div class="input-group-prepend">
+                                                       <span class="input-group-text"><span data-feather="calendar"></span></span>
+                                               </div>
+                                                   <input type="text" class="form-control" id="datepicker" name="dateTime">
+                                          </div>
+
+
+
+
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+         </form>
+
+            <h3 class="mb-3">Repairs</h3>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
@@ -81,7 +108,15 @@
     </div>
 </div>
 
+
+
+
 <#include "partials/script.ftlh">
+<#include "partials/script-datepicker.ftlh">
 <script src="/js/mainRepair.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
+
+
 </body>
 </html>
