@@ -1,7 +1,7 @@
 feather.replace();
 
 (function () {
-    console.log("You are in main.js!");
+    console.log("You are in mainRepair.js!");
 })();
 
 // Date format
@@ -47,7 +47,6 @@ jQuery(function ($) {
     //         }
     //     });
     // }
-
 
     $('#modal').on('show.bs.modal', function (event) {
         const id = event.relatedTarget.dataset.id;
