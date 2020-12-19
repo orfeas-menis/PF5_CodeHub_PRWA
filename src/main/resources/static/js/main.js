@@ -53,8 +53,7 @@ jQuery(function ($) {
         const id = event.relatedTarget.dataset.id;
         $('#deleteForm').attr('action', `/owner/${id}/delete`);
         $('.modal-title').text(function () {
-            return `Element #${id}`;
+            return `User #${id}`;
         });
     });
-
 });
