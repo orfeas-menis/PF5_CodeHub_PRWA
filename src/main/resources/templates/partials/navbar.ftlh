@@ -12,7 +12,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="/owner/create">Create</a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="/owner">Update</a>
+                      <a class="dropdown-item" href="/owner">Search</a>
 
                 </div>
           </li>
@@ -24,7 +24,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                      <a class="dropdown-item" href="/repair/create">Create</a>
                      <div class="dropdown-divider"></div>
-                     <a class="dropdown-item" href="/repair">Update</a>
+                     <a class="dropdown-item" href="/repair">Search</a>
                 </div>
           </li>
 
