@@ -70,7 +70,7 @@ jQuery(function ($) {
                 },
                 password: {
                     required:  "Password is required.",
-                    minlength: "Vat should be at least 4 characters/digits."
+                    minlength: "Password should contain at least 4 characters."
                 },
                 userRole: {
                     required: "User Role is required."

@@ -7,29 +7,21 @@
 <body>
 
 <#include "partials/navbar.ftlh">
-<form id="searchByAfmOrEmailForm" class="form-inline my-2 my-lg-0" method="post">
 
-    <h6 style="margin:3px;"> E-mail </h6> <input type="radio" style="margin:20px;" name="searchRadio"
-                                                 onclick="changeFormAction(1)">
-    <h6 style="margin:3px;"> Vat </h6><input type="radio" style="margin:20px;" name="searchRadio"
-                                             onclick="changeFormAction(2)">
-    <input class="form-control mr-sm-2" type="search" placeholder="Choose and Search" aria-label="Search"
-           name="parameter">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-</form>
-<script>
-    function changeFormAction(formAction) {
-        if (formAction == 1) {
-            $('#searchByAfmOrEmailForm').attr('action', '/search-email');
-        } else if (formAction == 2) {
-            $('#searchByAfmOrEmailForm').attr('action', '/search-vat');
-        }
-    }
-</script>
+
 
 <div class="container-fluid">
     <div class="row">
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <main role="main" class="ml-sm-auto col-lg-12 pt-3 px-4">
+            <form id="searchByAfmOrEmailForm" class="form-inline my-2 my-lg-0" method="post" action="/search-vat">
+                <h6 style="margin:3px;"> E-mail </h6> <input type="radio" style="margin:20px;" name="searchRadio"
+                                                             onclick="changeFormAction(1)">
+                <h6 style="margin:3px;"> Vat </h6><input type="radio" style="margin:20px;" name="searchRadio"
+                                                         onclick="changeFormAction(2)" checked>
+                <input class="form-control mr-sm-2" type="search" placeholder="Choose and Search" aria-label="Search"
+                       name="parameter">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
             <h3 class="mb-3">Users</h3>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
@@ -99,5 +91,14 @@
 </div>
 
 <#include "partials/script.ftlh">
+<script>
+    function changeFormAction(formAction) {
+        if (formAction == 1) {
+            $('#searchByAfmOrEmailForm').attr('action', '/search-email');
+        } else if (formAction == 2) {
+            $('#searchByAfmOrEmailForm').attr('action', '/search-vat');
+        }
+    }
+</script>
 </body>
 </html>

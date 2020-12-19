@@ -98,7 +98,7 @@ public class OwnerController {
         return "user_edit";
     }
 
-    @PostMapping(value = "/repair/edit")
+    @PostMapping(value = "/owner/edit")
     public String editUser(Model model,
                            @Valid @ModelAttribute(EDIT_FORM) UserForm userForm,
                            BindingResult bindingResult,
@@ -139,6 +139,9 @@ public class OwnerController {
         if (bindingResult.hasErrors()) {
             //have some error handling here, perhaps add extra error messages to the model
             model.addAttribute(ERROR_MESSAGE, "validation errors occurred");
+            model.addAttribute(CREATE_FORM, userForm);
+            model.addAttribute(USER_ROLES, UserRole.values());
+            model.addAttribute(PROPERTY_TYPES, PropertyType.values());
             return "owner_create";
         }
         UserModel userModel = userService.createUser(userForm);
