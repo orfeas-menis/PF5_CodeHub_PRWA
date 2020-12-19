@@ -34,7 +34,7 @@
 
         </ul>
       </div>
-       <form class="form-inline my-2 my-lg-0">
+       <form class="form-inline my-2 my-lg-0" action="/logout">
                 <button  class="btn btn-danger" type="submit">Log Out</button>
        </form>
     </nav>
