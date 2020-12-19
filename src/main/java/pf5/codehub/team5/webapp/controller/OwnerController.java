@@ -16,6 +16,7 @@ import pf5.codehub.team5.webapp.validators.UserCreateValidator;
 import pf5.codehub.team5.webapp.validators.UserEditValidator;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,21 +60,27 @@ public class OwnerController {
 
     @PostMapping(path = "/search-vat")
     public String searchPostVat(Model model, @RequestParam String parameter) {
-
         Optional<UserModel> user = userService.findByVat(parameter);
-        model.addAttribute(USER, user.get());
+        List<UserModel> users = new ArrayList<UserModel>();
+        if (user.isPresent()){
+            users.add(user.get());
+        }
+        model.addAttribute(USERS_LIST, users);
 
-        return "search-vat";
+        return "owner";
     }
 
 
     @PostMapping(path = "/search-email")
     public String searchPostEmail(Model model, @RequestParam String parameter) {
-
         Optional<UserModel> user = userService.findByEmail(parameter);
-        model.addAttribute(USER, user.get());
+        List<UserModel> users = new ArrayList<UserModel>();
+        if (user.isPresent()){
+            users.add(user.get());
+        }
+        model.addAttribute(USERS_LIST, users);
 
-        return "search-email";
+        return "owner";
     }
 
     @GetMapping("/owner/{id}/edit")
