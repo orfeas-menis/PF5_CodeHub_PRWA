@@ -1,48 +1,29 @@
-<#import "/spring.ftl" as spring />
-<html>
-<head>
-    <title>Books</title>
-<#--    <#include "partials/head.ftlh">-->
-</head>
-<body>
+<<!doctype html>
+<<html lang="en">
+  <head>
+    <meta charset="utf-8">
 
-<#--<#include "partials/navbar.ftlh">-->
+    <#include "partials/head.ftlh">
 
-<div class="container-fluid">
-    <div class="row">
-<#--        <#include "partials/sidebar.ftlh">-->
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <div class="row">
-                <div class="col-md-12 order-md-1">
-                    <h3 class="mb-3">Login</h3>
-                       
-                    <form name='login' action="/login" method='POST'>
-                        <div class="mb-3">
-                            <div class="input-group">                      
-                                <input type='text' class="form-control" name='email' value=''>         
-                            </div>
-                        </div>
-                           
-                        <div class="mb-3">         
-                            <div class="input-group">                       
-                                <input type='password' class="form-control" name='password' value=''>         
-                            </div>
-                        </div>      
-                         
-                        <button class="btn btn-primary btn-lg mt-4" name=submit type="submit">Login</button>
-                    </form>
-                </div>
 
-            </div>
 
-        </main>
 
-    </div>
-          
-</div>
-  
+    <title>Log In</title>
 
-<#--<#include "partials/scripts.ftlh">-->
+    <link href="/css/signin.css" rel="stylesheet">
+  </head>
 
-</body>
+  <body class="text-center">
+    <form class="form-signin" action="/login" method="post">
+      <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus name="email">
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required name="password">
+
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
+    </form>
+  </body>
 </html>
