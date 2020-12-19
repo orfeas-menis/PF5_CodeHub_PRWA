@@ -28,13 +28,13 @@ public class UserEditValidator implements Validator {
         //Check if already exists user with the provided email or VAT
         Optional<UserModel> usersWithGivenEmail = userService.findByEmail(userForm.getEmail());
         if (usersWithGivenEmail.isPresent()) {
-            if (usersWithGivenEmail.get().getId() != userForm.getId()){
+            if (!usersWithGivenEmail.get().getId().equals(userForm.getId())){
                 errors.rejectValue("email", "register.email.taken.error");
             }
         }
         Optional<UserModel> usersWithGivenVat = userService.findByVat(userForm.getVat());
         if (usersWithGivenVat.isPresent()) {
-            if (usersWithGivenVat.get().getId() != userForm.getId()){
+            if (!usersWithGivenVat.get().getId().equals(userForm.getId())){
                 errors.rejectValue("vat", "register.vat.taken.error");
             }
         }
@@ -44,7 +44,7 @@ public class UserEditValidator implements Validator {
             errors.rejectValue("postalCode", "register.postalCode.format.error");
         }
         //Phone number Regex found here: https://regexr.com/3c53v
-        String phoneNumberRegex = "^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$";
+        String phoneNumberRegex = "^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s./0-9]*$";
         if (!userForm.getPhoneNumber().matches(phoneNumberRegex)){
             errors.rejectValue("phoneNumber", "register.phoneNumber.format.error");
         }
@@ -65,7 +65,7 @@ public class UserEditValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "street", "register.street.not.null");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "streetNumber", "register.streetNumber.not.null");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "postalCode", "register.postalCode.not.null");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "register.password.not.null");
+
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phoneNumber", "register.phoneNumber.not.null");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "vat", "register.vat.not.null");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "register.email.not.null");

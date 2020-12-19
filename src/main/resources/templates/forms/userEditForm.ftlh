@@ -20,12 +20,7 @@
         </div>
     </div>
 
-    <div class="mb-3">
-        <label for="password">Password</label>
-        <div class="input-group">
-            <input type="text" class="form-control" id="password" name="password">
-        </div>
-    </div>
+
 
     <div class="mb-3">
         <label for="userRole">User Role</label>
