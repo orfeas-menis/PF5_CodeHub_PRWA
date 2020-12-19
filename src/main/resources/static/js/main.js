@@ -107,7 +107,7 @@ jQuery(function ($) {
 
     $('#modal').on('show.bs.modal', function (event) {
         const id = event.relatedTarget.dataset.id;
-        $('#deleteForm').attr('action', `/owner/${id}/delete`);
+        $('#deleteForm').attr('action', `/admin/owner/${id}/delete`);
         $('.modal-title').text(function () {
             return `User #${id}`;
         });

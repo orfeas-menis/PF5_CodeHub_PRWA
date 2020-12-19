@@ -47,7 +47,7 @@ public class RepairController {
 //        binder.addValidators(repairEditValidator);
 //    }
 
-    @GetMapping(path = "/repair")
+    @GetMapping(path = "/admin/repair")
     public String repairHome(Model model) {
         List<RepairModel> repairs = repairService.findFirst10();
         model.addAttribute(REPAIRS_LIST, repairs);
@@ -55,7 +55,7 @@ public class RepairController {
         return "repair";
     }
 
-    @GetMapping("/repair/create")
+    @GetMapping("/admin/repair/create")
     public String repairCreateGet(Model model) {
         model.addAttribute(REPAIR_FORM, new RepairForm());
         model.addAttribute(CATEGORIES, Category.values());
@@ -63,7 +63,7 @@ public class RepairController {
         return "repairCreate";
     }
 
-    @PostMapping(value = "/repair/create")
+    @PostMapping(value = "/admin/repair/create")
     public String repairCreate(Model model,
                                @Valid @ModelAttribute(REPAIR_FORM) RepairForm repairForm,
                                BindingResult bindingResult,
@@ -74,10 +74,10 @@ public class RepairController {
             return "repairCreate";
         }
         RepairModel repairModel = repairService.createRepair(repairForm);
-        return "redirect:/repair";
+        return "redirect:/admin/repair";
     }
 
-    @GetMapping("/repair/{id}/edit")
+    @GetMapping("/admin/repair/{id}/edit")
     public String editRepair(@PathVariable Long id, Model model) {
         Optional<RepairModel> optModel = repairService.findById(id);
         if (optModel.isPresent()) {
@@ -88,12 +88,12 @@ public class RepairController {
             model.addAttribute(STATUSES, Status.values());
         } else {
             model.addAttribute(ERROR_MESSAGE, "user does not exist");
-            return "redirect:/repair";
+            return "redirect:/admin/repair";
         }
         return "repair_edit";
     }
 
-    @PostMapping(value = "/repair/edit")
+    @PostMapping(value = "/admin/repair/edit")
     public String editUser(Model model,
                            @Valid @ModelAttribute(EDIT_FORM) RepairForm repairForm,
                            BindingResult bindingResult,
@@ -102,18 +102,18 @@ public class RepairController {
             //have some error handling here, perhaps add extra error messages to the model
             model.addAttribute(ERROR_MESSAGE, "validation errors occurred");
             if (repairForm.getId() != null) {
-                return "redirect:/repair/" + repairForm.getId().toString() + "/edit";
+                return "redirect:/admin/repair/" + repairForm.getId().toString() + "/edit";
             } else {
-                return "redirect:/repair";
+                return "redirect:/admin/repair";
             }
         }
         RepairModel repairModel = repairService.updateRepair(repairForm);
-        return "redirect:/repair";
+        return "redirect:/admin/repair";
     }
 
-    @PostMapping("/repair/{id}/delete")
+    @PostMapping("/admin/repair/{id}/delete")
     public String deleteRepair(@PathVariable Long id) {
         String response = repairService.deleteById(id);
-        return "redirect:/repair";
+        return "redirect:/admin/repair";
     }
 }

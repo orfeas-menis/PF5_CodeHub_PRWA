@@ -2,7 +2,7 @@
 
 <h4 class="mb-3">Create User</h4>
 
-<form id="editForm" action="/repair/edit" method="post">
+<form id="editForm" action="/admin/repair/edit" method="post">
 
     <input type="hidden" name="id" value="${repair.id}">
 

@@ -91,7 +91,7 @@ jQuery(function ($) {
 
     $('#modal').on('show.bs.modal', function (event) {
         const id = event.relatedTarget.dataset.id;
-        $('#deleteRepairForm').attr('action', `/repair/${id}/delete`);
+        $('#deleteRepairForm').attr('action', `/admin/repair/${id}/delete`);
         $('.modal-title').text(function () {
             return `Repair #${id}`;
         });

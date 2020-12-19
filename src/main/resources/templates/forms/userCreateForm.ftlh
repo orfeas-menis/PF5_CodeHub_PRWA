@@ -2,7 +2,7 @@
 
 <h4 class="mb-3">Create User</h4>
 
-<form id="createForm" action="/owner/create" method="post">
+<form id="createForm" action="/admin/owner/create" method="post">
 
     <div class="mb-3">
         <label for="vat">VAT</label>

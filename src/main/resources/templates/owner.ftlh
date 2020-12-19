@@ -13,7 +13,7 @@
 <div class="container-fluid">
     <div class="row">
         <main role="main" class="ml-sm-auto col-lg-12 pt-3 px-4">
-            <form id="searchByAfmOrEmailForm" class="form-inline my-2 my-lg-0" method="post" action="/search-vat">
+            <form id="searchByAfmOrEmailForm" class="form-inline my-2 my-lg-0" method="post" action="/admin/search-vat">
                 <h6 style="margin:3px;"> E-mail </h6> <input type="radio" style="margin:20px;" name="searchRadio"
                                                              onclick="changeFormAction(1)">
                 <h6 style="margin:3px;"> Vat </h6><input type="radio" style="margin:20px;" name="searchRadio"
@@ -43,7 +43,7 @@
                                 <td>${user.lastName}</td>
                                 <td>${user.vat}</td>
                                 <td>${user.email}</td>
-                                <td class="text-center"><a class="btn btn-link" href="/owner/${user.id}/edit"><span
+                                <td class="text-center"><a class="btn btn-link" href="/admin/owner/${user.id}/edit"><span
                                                 data-feather="tool"></span></a></td>
                                 <td class="text-center">
 
@@ -94,9 +94,9 @@
 <script>
     function changeFormAction(formAction) {
         if (formAction == 1) {
-            $('#searchByAfmOrEmailForm').attr('action', '/search-email');
+            $('#searchByAfmOrEmailForm').attr('action', '/admin/search-email');
         } else if (formAction == 2) {
-            $('#searchByAfmOrEmailForm').attr('action', '/search-vat');
+            $('#searchByAfmOrEmailForm').attr('action', '/admin/search-vat');
         }
     }
 </script>

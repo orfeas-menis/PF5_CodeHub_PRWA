@@ -2,7 +2,7 @@
 
 <h4 class="mb-3">Create Repair</h4>
 
-<form id="createForm" action="/repair/create" method="post">
+<form id="createForm" action="/admin/repair/create" method="post">
 
     <div class="mb-3">
         <label for="vat">User VAT</label>

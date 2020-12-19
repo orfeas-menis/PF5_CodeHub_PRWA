@@ -2,7 +2,7 @@
 
 <h4 class="mb-3">Create User</h4>
 
-<form id="editForm" action="/owner/edit" method="post">
+<form id="editForm" action="/admin/owner/edit" method="post">
 
     <input type="hidden" name="id" value="${user.id}">
 

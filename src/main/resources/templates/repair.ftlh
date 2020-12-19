@@ -34,7 +34,7 @@
                                 <td>${repair.street}</td>
                                 <td>${repair.cost}</td>
                                 <td>${repair.status}</td>
-                                <td class="text-center"><a class="btn btn-link" href="/repair/${repair.id}/edit"><span
+                                <td class="text-center"><a class="btn btn-link" href="/admin/repair/${repair.id}/edit"><span
                                                 data-feather="tool"></span></a></td>
                                 <td class="text-center">
 

@@ -51,14 +51,14 @@ public class OwnerController {
     @Autowired
     private UserEditValidator userEditValidator;
 
-    @GetMapping(path = "/owner")
+    @GetMapping(path = "/admin/owner")
     public String ownerTab(Model model) {
         List<UserModel> users = userService.findFirst10();
         model.addAttribute(USERS_LIST, users);
         return "owner";
     }
 
-    @PostMapping(path = "/search-vat")
+    @PostMapping(path = "/admin/search-vat")
     public String searchPostVat(Model model, @RequestParam String parameter) {
         Optional<UserModel> user = userService.findByVat(parameter);
         List<UserModel> users = new ArrayList<UserModel>();
@@ -71,7 +71,7 @@ public class OwnerController {
     }
 
 
-    @PostMapping(path = "/search-email")
+    @PostMapping(path = "/admin/search-email")
     public String searchPostEmail(Model model, @RequestParam String parameter) {
         Optional<UserModel> user = userService.findByEmail(parameter);
         List<UserModel> users = new ArrayList<UserModel>();
@@ -83,7 +83,7 @@ public class OwnerController {
         return "owner";
     }
 
-    @GetMapping("/owner/{id}/edit")
+    @GetMapping("/admin/owner/{id}/edit")
     public String editUser(@PathVariable Long id, Model model) {
         Optional<UserModel> optModel = userService.findById(id);
         if (optModel.isPresent()) {
@@ -93,12 +93,12 @@ public class OwnerController {
             model.addAttribute(PROPERTY_TYPES, PropertyType.values());
         } else {
             model.addAttribute(ERROR_MESSAGE, "user does not exist");
-            return "redirect:/owner";
+            return "redirect:/admin/owner";
         }
         return "user_edit";
     }
 
-    @PostMapping(value = "/owner/edit")
+    @PostMapping(value = "/admin/owner/edit")
     public String editUser(Model model,
                            @Valid @ModelAttribute(EDIT_FORM) UserForm userForm,
                            BindingResult bindingResult,
@@ -107,23 +107,23 @@ public class OwnerController {
             //have some error handling here, perhaps add extra error messages to the model
             model.addAttribute(ERROR_MESSAGE, "validation errors occurred");
             if (userForm.getId() != null) {
-                return "redirect:/owner/" + userForm.getId().toString() + "/edit";
+                return "redirect:/admin/owner/" + userForm.getId().toString() + "/edit";
             } else {
-                return "redirect:/owner";
+                return "redirect:/admin/owner";
             }
         }
         UserModel userModel = userService.updateUser(userForm);
-        return "redirect:/owner";
+        return "redirect:/admin/owner";
     }
 
 
-    @PostMapping("/owner/{id}/delete")
+    @PostMapping("/admin/owner/{id}/delete")
     public String deleteUser(@PathVariable Long id) {
         String response = userService.deleteById(id);
-        return "redirect:/owner";
+        return "redirect:/admin/owner";
     }
 
-    @GetMapping("/owner/create")
+    @GetMapping("/admin/owner/create")
     public String ownerDynamic(Model model) {
         model.addAttribute(CREATE_FORM, new UserForm());
         model.addAttribute(USER_ROLES, UserRole.values());
@@ -131,7 +131,7 @@ public class OwnerController {
         return "owner_create";
     }
 
-    @PostMapping("/owner/create")
+    @PostMapping("/admin/owner/create")
     public String ownerCreate(Model model,
                               @Valid @ModelAttribute(CREATE_FORM) UserForm userForm,
                               BindingResult bindingResult,
@@ -149,7 +149,7 @@ public class OwnerController {
         //we can display the created user if we take the response from createUser and put it as an attribute
         //we have to also make frontend validation
         //we have to see what happens with password
-        return "redirect:/owner";
+        return "redirect:/admin/owner";
     }
 
 }

@@ -6,25 +6,25 @@
                      <a class="nav-link" href="/admin">Home</a>
         </li>
           <li class="nav-item dropdown">
-               <a class="nav-link dropdown-toggle" href="/owner" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <a class="nav-link dropdown-toggle" href="/admin/owner" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                      Owners
                </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="/owner/create">Create</a>
+                      <a class="dropdown-item" href="/admin/owner/create">Create</a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="/owner">Search</a>
+                      <a class="dropdown-item" href="/admin/owner">Search</a>
 
                 </div>
           </li>
 
           <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="/repair" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="/admin/repair" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                      Repairs
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                     <a class="dropdown-item" href="/repair/create">Create</a>
+                     <a class="dropdown-item" href="/admin/repair/create">Create</a>
                      <div class="dropdown-divider"></div>
-                     <a class="dropdown-item" href="/repair">Search</a>
+                     <a class="dropdown-item" href="/admin/repair">Search</a>
                 </div>
           </li>
 
