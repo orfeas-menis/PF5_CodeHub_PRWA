@@ -2,6 +2,10 @@
 
 <h4 class="mb-3">Create User</h4>
 
+<#if errorMessage??>
+    <h2>${errorMessage}</h2>
+</#if>
+
 <form id="editForm" action="/admin/owner/edit" method="post">
 
     <input type="hidden" name="id" value="${user.id}">
@@ -10,6 +14,14 @@
         <label for="vat">VAT</label>
         <div class="input-group">
             <input type="text" class="form-control" id="vat" name="vat" value="${user.vat}">
+            <#if spring.status.error>
+                <ul>
+                    <#list spring.status.errorMessages as error>
+                        <li style="color: #dc3545">${error}</li>
+                    </#list>
+                </ul>
+            </#if>
+        </div>
         </div>
     </div>
 
@@ -17,6 +29,14 @@
         <label for="email">Email</label>
         <div class="input-group">
             <input type="text" class="form-control" id="email" name="email" value="${user.email}">
+            <#if spring.status.error>
+                <ul>
+                    <#list spring.status.errorMessages as error>
+                        <li style="color: #dc3545">${error}</li>
+                    </#list>
+                </ul>
+            </#if>
+        </div>
         </div>
     </div>
 
@@ -39,6 +59,14 @@
         <label for="firstName">First Name</label>
         <div class="input-group">
             <input type="text" class="form-control" id="firstName" name="firstName" value="${user.firstName}">
+            <#if spring.status.error>
+                <ul>
+                    <#list spring.status.errorMessages as error>
+                        <li style="color: #dc3545">${error}</li>
+                    </#list>
+                </ul>
+            </#if>
+        </div>
         </div>
     </div>
 
@@ -46,6 +74,14 @@
         <label for="lastName">Last Name</label>
         <div class="input-group">
             <input type="text" class="form-control" id="lastName" name="lastName" value="${user.lastName}">
+            <#if spring.status.error>
+                <ul>
+                    <#list spring.status.errorMessages as error>
+                        <li style="color: #dc3545">${error}</li>
+                    </#list>
+                </ul>
+            </#if>
+        </div>
         </div>
     </div>
 
@@ -53,6 +89,14 @@
         <label for="city">City</label>
         <div class="input-group">
             <input type="text" class="form-control" id="city" name="city" value="${user.city}">
+            <#if spring.status.error>
+                <ul>
+                    <#list spring.status.errorMessages as error>
+                        <li style="color: #dc3545">${error}</li>
+                    </#list>
+                </ul>
+            </#if>
+        </div>
         </div>
     </div>
 
@@ -60,6 +104,14 @@
         <label for="street">Street</label>
         <div class="input-group">
             <input type="text" class="form-control" id="street" name="street" value="${user.street}">
+            <#if spring.status.error>
+                <ul>
+                    <#list spring.status.errorMessages as error>
+                        <li style="color: #dc3545">${error}</li>
+                    </#list>
+                </ul>
+            </#if>
+        </div>
         </div>
     </div>
 
@@ -67,6 +119,14 @@
         <label for="streetNumber">Number</label>
         <div class="input-group">
             <input type="text" class="form-control" id="streetNumber" name="streetNumber" value="${user.streetNumber}">
+            <#if spring.status.error>
+                <ul>
+                    <#list spring.status.errorMessages as error>
+                        <li style="color: #dc3545">${error}</li>
+                    </#list>
+                </ul>
+            </#if>
+        </div>
         </div>
     </div>
 
@@ -74,6 +134,14 @@
         <label for="postalCode">Postal Code</label>
         <div class="input-group">
             <input type="text" class="form-control" id="postalCode" name="postalCode" value="${user.postalCode}">
+            <#if spring.status.error>
+                <ul>
+                    <#list spring.status.errorMessages as error>
+                        <li style="color: #dc3545">${error}</li>
+                    </#list>
+                </ul>
+            </#if>
+        </div>
         </div>
     </div>
 
@@ -81,6 +149,14 @@
         <label for="phoneNumber">Phone Number</label>
         <div class="input-group">
             <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" value="${user.phoneNumber}">
+            <#if spring.status.error>
+                <ul>
+                    <#list spring.status.errorMessages as error>
+                        <li style="color: #dc3545">${error}</li>
+                    </#list>
+                </ul>
+            </#if>
+        </div>
         </div>
     </div>
 
