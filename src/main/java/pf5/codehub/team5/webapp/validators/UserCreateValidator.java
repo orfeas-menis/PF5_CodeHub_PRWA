@@ -30,14 +30,14 @@ public class UserCreateValidator implements Validator {
         Optional<UserModel> usersWithGivenEmail = userService.findByEmail(userForm.getEmail());
         if (usersWithGivenEmail.isPresent()) {
             errors.rejectValue("email", "register.email.taken.error");
-        } else if (userForm.getEmail().matches(emailRegex)){
+        } else if (!userForm.getEmail().matches(emailRegex)){
             errors.rejectValue("email", "register.email.pattern.invalid");
         }
         String vatRegex = "\\b\\d{9}\\b";
         Optional<UserModel> usersWithGivenVat = userService.findByVat(userForm.getVat());
         if (usersWithGivenVat.isPresent()) {
             errors.rejectValue("vat", "register.vat.taken.error");
-        } else if (userForm.getVat().matches(vatRegex)) {
+        } else if (!userForm.getVat().matches(vatRegex)) {
             errors.rejectValue("vat", "register.vat.format.error");
         }
         //We only accept postal codes that consist of exactly 5 digits

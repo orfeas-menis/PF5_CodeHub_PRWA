@@ -5,7 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pf5.codehub.team5.webapp.enums.PropertyType;
 import pf5.codehub.team5.webapp.enums.UserRole;
@@ -139,7 +144,6 @@ public class OwnerController {
         if (bindingResult.hasErrors()) {
             //have some error handling here, perhaps add extra error messages to the model
             model.addAttribute(ERROR_MESSAGE, "validation errors occurred");
-            model.addAttribute(CREATE_FORM, new UserForm());
             model.addAttribute(USER_ROLES, UserRole.values());
             model.addAttribute(PROPERTY_TYPES, PropertyType.values());
             return "owner_create";
