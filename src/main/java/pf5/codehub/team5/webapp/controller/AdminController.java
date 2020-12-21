@@ -21,6 +21,6 @@ public class AdminController {
     public String adminHome(Model model) {
         List<RepairModel> repairs = repairService.findTodayActiveRepairs();
         model.addAttribute(REPAIRS_LIST,repairs);
-        return "adminhome";
+        return "adminHome";
     }
 }
