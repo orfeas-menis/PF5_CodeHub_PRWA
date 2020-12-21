@@ -52,6 +52,7 @@
                         <th>Cost</th>
                         <th>Status</th>
                         <th>User VAT</th>
+                        <th>Date</th>
                         <th class="text-center">Edit</th>
                         <th class="text-center">Remove</th>
                     </tr>
@@ -66,6 +67,7 @@
                                 <td>${repair.cost}</td>
                                 <td>${repair.status}</td>
                                 <td>${repair.userVat}</td>
+                                <td>${repair.dateTime}</td>
                                 <td class="text-center"><a class="btn btn-link"
                                                            href="/admin/repair/${repair.id}/edit"><span
                                                 data-feather="tool"></span></a></td>

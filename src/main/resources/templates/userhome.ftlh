@@ -34,9 +34,11 @@
                           <thead>
                           <th>Category</th>
                           <th>City</th>
+                          <th>Street</th>
+                          <th>Number</th>
                           <th>Cost</th>
-                          <th>status</th>
-                          <th>street</th>
+                          <th>Status</th>
+                          <th>Date</th>
                           </thead>
                           <tbody>
 
@@ -44,9 +46,11 @@
                                   <tr>
                                       <td>${repair.category}</td>
                                       <td>${repair.city} </td>
+                                      <td>${repair.street}</td>
+                                      <td>${repair.streetNumber}</td>
                                       <td>${repair.cost}</td>
                                       <td>${repair.status}</td>
-                                     <td>${repair.street}</td>
+                                      <td>${repair.dateTime}</td>
                                   </tr>
                              </#list>
 

@@ -29,6 +29,7 @@
                         <th>Last Name</th>
                         <th>VAT</th>
                         <th>Email</th>
+                        <th>Phone Number</th>
                         <th class="text-center">Edit</th>
                         <th class="text-center">Remove</th>
                     </tr>
@@ -41,6 +42,7 @@
                                 <td>${user.lastName}</td>
                                 <td>${user.vat}</td>
                                 <td>${user.email}</td>
+                                <td>${user.phoneNumber}</td>
                                 <td class="text-center"><a class="btn btn-link"
                                                            href="/admin/owner/${user.id}/edit"><span
                                                 data-feather="tool"></span></a></td>

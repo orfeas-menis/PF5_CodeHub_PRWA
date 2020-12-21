@@ -87,6 +87,7 @@ public class RepairServiceImpl implements RepairService {
                 .findByDateTime(LocalDate.now())
                 .stream()
                 .filter(repair -> repair.getStatus() == Status.INPROGRESS)
+                .limit(10)
                 .map(repair -> repairModelMapper.map(repair))
                 .collect(Collectors.toList());
     }
