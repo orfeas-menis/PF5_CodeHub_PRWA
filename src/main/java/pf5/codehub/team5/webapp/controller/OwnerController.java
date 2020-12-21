@@ -60,7 +60,7 @@ public class OwnerController {
 
     @PostMapping(path = "/admin/search-vat")
     public String searchPostVat(Model model, @RequestParam String parameter) {
-        Optional<UserModel> user = userService.findByVat(parameter);
+        Optional<UserModel> user = userService.findByVat(parameter.trim());
         List<UserModel> users = new ArrayList<UserModel>();
         if (user.isPresent()){
             users.add(user.get());
@@ -73,7 +73,7 @@ public class OwnerController {
 
     @PostMapping(path = "/admin/search-email")
     public String searchPostEmail(Model model, @RequestParam String parameter) {
-        Optional<UserModel> user = userService.findByEmail(parameter);
+        Optional<UserModel> user = userService.findByEmail(parameter.trim());
         List<UserModel> users = new ArrayList<UserModel>();
         if (user.isPresent()){
             users.add(user.get());
