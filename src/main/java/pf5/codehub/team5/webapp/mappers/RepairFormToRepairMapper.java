@@ -9,8 +9,6 @@ import pf5.codehub.team5.webapp.enums.Status;
 import pf5.codehub.team5.webapp.form.RepairForm;
 import pf5.codehub.team5.webapp.repository.UserRepository;
 
-import javax.persistence.Access;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
@@ -31,14 +29,17 @@ public class RepairFormToRepairMapper {
         repair.setDescription(repairForm.getDescription());
         repair.setStatus(Status.valueOf(repairForm.getStatus()));
         repair.setCategory(Category.valueOf(repairForm.getCategory()));
+        String myCost = repairForm.getCost().replace(',','.');
         boolean numeric = true;
+        Double num = 0.0;
         try {
-            Double num = Double.parseDouble(repairForm.getCost());
+            num = Double.parseDouble(myCost);
         } catch (NumberFormatException e) {
             numeric = false;
         }
-        if (numeric)
-        repair.setCost(Double.parseDouble(repairForm.getCost()));
+        if (numeric) {
+            repair.setCost(Math.round(num * 100.0) / 100.0);
+        }
         Optional<User> user = userRepository.findByVat(repairForm.getVat());
         if (user.isPresent()) repair.setUser(user.get());
         if (repairForm.getId() != null){

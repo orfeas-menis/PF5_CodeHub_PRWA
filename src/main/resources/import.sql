@@ -16,11 +16,6 @@ INSERT INTO REPAIR (category, city, cost, date_time, description, postal_code, s
 INSERT INTO REPAIR (category, city, cost, date_time, description, postal_code, status, street, street_number, user_id) VALUES ('ELECTR', 'Athens', 80, CAST( GETDATE() AS Date ) ,'Beautiful Design','15770','INPROGRESS','Panepistimiou','16','3');
 INSERT INTO REPAIR (category, city, cost, date_time, description, postal_code, status, street, street_number, user_id) VALUES ('CHAMBRANLE', 'Athens', 260.70, CAST( GETDATE() AS Date ) ,'Beautiful Design','15770','INPROGRESS','Panepistimiou','16','3');
 
-INSERT INTO REPAIR (category, city, cost, date_time, description, postal_code, status, street, street_number, user_id) VALUES ('ELECTR', 'Volos', 26, CAST( GETDATE() - 1 AS Date ),'Yesterday Repair','16121','INPROGRESS','Stadiou','20','6');
-INSERT INTO REPAIR (category, city, cost, date_time, description, postal_code, status, street, street_number, user_id) VALUES ('CHAMBRANLE', 'Volos', 140, CAST( GETDATE() - 1 AS Date ),'Yesterday Repair','16121','INPROGRESS','Stadiou','20','6');
-INSERT INTO REPAIR (category, city, cost, date_time, description, postal_code, status, street, street_number, user_id) VALUES ('PLUMP', 'Volos', 60, CAST( GETDATE() - 3 AS Date ),'3 days before Repair','16121','INPROGRESS','Stadiou','20','6');
-INSERT INTO REPAIR (category, city, cost, date_time, description, postal_code, status, street, street_number, user_id) VALUES ('PAINT', 'Volos', 26.88, CAST( GETDATE() - 3 AS Date ),'3 days before Repair','16121','INPROGRESS','Stadiou','20','6');
-
 INSERT INTO REPAIR (category, city, cost, date_time, description, postal_code, status, street, street_number, user_id) VALUES ('PLUMP', 'Thessaloniki', 50, CAST( GETDATE() AS Date ),'Good Job','12340','COMPLETED','Aiolou','51','5');
 INSERT INTO REPAIR (category, city, cost, date_time, description, postal_code, status, street, street_number, user_id) VALUES ('ELECTR', 'Thessaloniki', 42.98, CAST( GETDATE() AS Date ),'Good Job','12340','INPROGRESS','Aiolou','51','5');
 
@@ -33,7 +28,10 @@ INSERT INTO REPAIR (category, city, cost, date_time, description, postal_code, s
 INSERT INTO REPAIR (category, city, cost, date_time, description, postal_code, status, street, street_number, user_id) VALUES ('ELECTR', 'Volos', 90, CAST( GETDATE() AS Date ),'Almost Done','29865','INPROGRESS','Stadiou','20','2');
 INSERT INTO REPAIR (category, city, cost, date_time, description, postal_code, status, street, street_number, user_id) VALUES ('PLUMP', 'Volos', 70, CAST( GETDATE() AS Date ),'Almost Done','29865','INPROGRESS','Stadiou','20','2');
 
-
+INSERT INTO REPAIR (category, city, cost, date_time, description, postal_code, status, street, street_number, user_id) VALUES ('ELECTR', 'Volos', 26, CAST( GETDATE() - 1 AS Date ),'Yesterday Repair','16121','INPROGRESS','Stadiou','20','6');
+INSERT INTO REPAIR (category, city, cost, date_time, description, postal_code, status, street, street_number, user_id) VALUES ('CHAMBRANLE', 'Volos', 140, CAST( GETDATE() - 1 AS Date ),'Yesterday Repair','16121','INPROGRESS','Stadiou','20','6');
+INSERT INTO REPAIR (category, city, cost, date_time, description, postal_code, status, street, street_number, user_id) VALUES ('PLUMP', 'Volos', 60, CAST( GETDATE() - 3 AS Date ),'3 days before Repair','16121','INPROGRESS','Stadiou','20','6');
+INSERT INTO REPAIR (category, city, cost, date_time, description, postal_code, status, street, street_number, user_id) VALUES ('PAINT', 'Volos', 26.88, CAST( GETDATE() - 3 AS Date ),'3 days before Repair','16121','INPROGRESS','Stadiou','20','6');
 
 
 

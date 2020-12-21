@@ -19,7 +19,6 @@ public interface UserService {
     Optional<User> fetchUserWithRepairsByUserId(Long id);
     Optional<UserModel> findById(Long id);
     UserModel createUser(UserForm userForm);
-    Optional<UserForm> findUserForm(Long id);
     UserModel updateUser(UserForm userForm);
     String deleteById(Long id);
     List<UserModel> findFirst10();

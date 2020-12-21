@@ -26,7 +26,7 @@ public interface RepairRepository extends JpaRepository<Repair, Long> {
 
     List<Repair> findTop10ByDateTimeOrderByDateTime(LocalDate Date);
 
-    List<Repair>findFirst10By();
+    List<Repair>findFirst10ByOrderByIdDesc();
 
     List<Repair> findByUser(User user);
 }

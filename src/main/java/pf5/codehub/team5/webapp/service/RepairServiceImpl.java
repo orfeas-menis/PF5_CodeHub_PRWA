@@ -7,7 +7,6 @@ import pf5.codehub.team5.webapp.domain.User;
 import pf5.codehub.team5.webapp.enums.Status;
 import pf5.codehub.team5.webapp.form.RepairForm;
 import pf5.codehub.team5.webapp.mappers.RepairFormToRepairMapper;
-import pf5.codehub.team5.webapp.mappers.RepairToRepairFormMapper;
 import pf5.codehub.team5.webapp.mappers.RepairToRepairModelMapper;
 import pf5.codehub.team5.webapp.model.RepairModel;
 import pf5.codehub.team5.webapp.repository.RepairRepository;
@@ -32,8 +31,6 @@ public class RepairServiceImpl implements RepairService {
     @Autowired
     private RepairToRepairModelMapper repairModelMapper;
 
-    @Autowired
-    private RepairToRepairFormMapper repairFormMapper;
 
     @Autowired
     private RepairFormToRepairMapper repairMapper;
@@ -126,7 +123,7 @@ public class RepairServiceImpl implements RepairService {
     @Override
     public List<RepairModel> findFirst10() {
         return repairRepository
-                .findFirst10By()
+                .findFirst10ByOrderByIdDesc()
                 .stream()
                 .map(repair -> repairModelMapper.map(repair))
                 .collect(Collectors.toList());

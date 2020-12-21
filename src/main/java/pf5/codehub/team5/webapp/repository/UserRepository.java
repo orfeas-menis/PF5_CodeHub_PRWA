@@ -20,7 +20,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> findById(Long id);
 
-    List<User> findFirst10By();
+    List<User> findFirst10ByOrderByIdDesc();
 
     @Query(value="SELECT a FROM User a JOIN FETCH a.repairs WHERE a.id = (:id)")
     Optional<User> fetchUserWithRepairsByUserId(@Param("id") Long id);

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import pf5.codehub.team5.webapp.domain.User;
 import pf5.codehub.team5.webapp.form.UserForm;
 import pf5.codehub.team5.webapp.mappers.UserFormToUserMapper;
-import pf5.codehub.team5.webapp.mappers.UserToUserFormMapper;
 import pf5.codehub.team5.webapp.mappers.UserToUserModelMapper;
 import pf5.codehub.team5.webapp.model.UserModel;
 import pf5.codehub.team5.webapp.repository.RepairRepository;
@@ -28,9 +27,6 @@ public class UserServiceImpl implements UserService {
     private UserToUserModelMapper userModelMapper;
 
     @Autowired
-    private UserToUserFormMapper userFormMapper;
-
-    @Autowired
     private UserFormToUserMapper userMapper;
 
     @Override
@@ -51,7 +47,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserModel> findFirst10() {
         return userRepository
-                .findFirst10By()
+                .findFirst10ByOrderByIdDesc()
                 .stream()
                 .map(user -> userModelMapper.map(user))
                 .collect(Collectors.toList());
@@ -104,13 +100,6 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.map(userForm);
         User newUser = userRepository.save(user);
         return userModelMapper.map(newUser);
-    }
-
-    @Override
-    public Optional<UserForm> findUserForm(Long id) {
-        return userRepository
-                .findById(id)
-                .map(user -> userFormMapper.map(user));
     }
 
     @Override
