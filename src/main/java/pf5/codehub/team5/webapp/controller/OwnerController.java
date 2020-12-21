@@ -137,9 +137,7 @@ public class OwnerController {
                               BindingResult bindingResult,
                               RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
-            //have some error handling here, perhaps add extra error messages to the model
             model.addAttribute(ERROR_MESSAGE, "validation errors occurred");
-            model.addAttribute(CREATE_FORM, new UserForm());
             model.addAttribute(USER_ROLES, UserRole.values());
             model.addAttribute(PROPERTY_TYPES, PropertyType.values());
             return "owner_create";
