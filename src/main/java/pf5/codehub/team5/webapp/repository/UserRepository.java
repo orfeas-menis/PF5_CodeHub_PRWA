@@ -22,6 +22,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     List<User> findFirst10ByOrderByIdDesc();
 
-    @Query(value="SELECT a FROM User a JOIN FETCH a.repairs WHERE a.id = (:id)")
+    @Query(value = "SELECT a FROM User a JOIN FETCH a.repairs WHERE a.id = (:id)")
     Optional<User> fetchUserWithRepairsByUserId(@Param("id") Long id);
 }

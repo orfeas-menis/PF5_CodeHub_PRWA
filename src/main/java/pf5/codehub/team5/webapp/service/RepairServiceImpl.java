@@ -109,12 +109,11 @@ public class RepairServiceImpl implements RepairService {
     @Override
     public RepairModel createRepair(RepairForm repairForm) {
         Optional<User> opt = userRepository.findByVat(repairForm.getVat());
-        if (opt.isPresent()){
+        if (opt.isPresent()) {
             Repair repair = repairMapper.map(repairForm);
             Repair newRepair = repairRepository.save(repair);
             return repairModelMapper.map(newRepair);
-        }
-        else{
+        } else {
             return new RepairModel();
         }
 

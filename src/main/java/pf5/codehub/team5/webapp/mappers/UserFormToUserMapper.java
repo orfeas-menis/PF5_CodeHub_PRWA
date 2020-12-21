@@ -14,7 +14,7 @@ public class UserFormToUserMapper {
     @Autowired
     private SecurityConfig securityConfig;
 
-    public User map(UserForm userForm){
+    public User map(UserForm userForm) {
         User user = new User();
         user.setCity(userForm.getCity());
         user.setEmail(userForm.getEmail());
@@ -30,7 +30,7 @@ public class UserFormToUserMapper {
         if (userForm.getPassword() != null) {
             user.setPassword(securityConfig.passwordEncoder().encode(userForm.getPassword()));
         }
-        if (userForm.getId() != null){
+        if (userForm.getId() != null) {
             user.setId(userForm.getId());
         }
         return user;

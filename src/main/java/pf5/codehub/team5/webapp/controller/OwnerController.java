@@ -62,7 +62,7 @@ public class OwnerController {
     public String searchPostVat(Model model, @RequestParam String parameter) {
         Optional<UserModel> user = userService.findByVat(parameter.trim());
         List<UserModel> users = new ArrayList<UserModel>();
-        if (user.isPresent()){
+        if (user.isPresent()) {
             users.add(user.get());
         }
         model.addAttribute(USERS_LIST, users);
@@ -75,7 +75,7 @@ public class OwnerController {
     public String searchPostEmail(Model model, @RequestParam String parameter) {
         Optional<UserModel> user = userService.findByEmail(parameter.trim());
         List<UserModel> users = new ArrayList<UserModel>();
-        if (user.isPresent()){
+        if (user.isPresent()) {
             users.add(user.get());
         }
         model.addAttribute(USERS_LIST, users);
@@ -145,10 +145,6 @@ public class OwnerController {
             return "owner_create";
         }
         UserModel userModel = userService.createUser(userForm);
-//        redirectAttributes.addAttribute("id", userModel.getId());
-        //we can display the created user if we take the response from createUser and put it as an attribute
-        //we have to also make frontend validation
-        //we have to see what happens with password
         return "redirect:/admin/owner";
     }
 

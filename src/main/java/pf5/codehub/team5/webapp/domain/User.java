@@ -1,7 +1,6 @@
 package pf5.codehub.team5.webapp.domain;
 
 
-
 import pf5.codehub.team5.webapp.enums.PropertyType;
 import pf5.codehub.team5.webapp.enums.UserRole;
 

@@ -19,14 +19,14 @@ public interface RepairRepository extends JpaRepository<Repair, Long> {
     Optional<Repair> findById(Long id);
 
     /* findRecentRepairs() and findTop10ByOrderByDateTimeDesc() perform (or at least should perform) the same task */
-    @Query(value="SELECT TOP 10 * FROM Repair ORDER BY date_time DESC", nativeQuery = true)
+    @Query(value = "SELECT TOP 10 * FROM Repair ORDER BY date_time DESC", nativeQuery = true)
     List<Repair> findRecentRepairs();
 
     List<Repair> findTop10ByOrderByDateTimeDesc();
 
     List<Repair> findTop10ByDateTimeOrderByDateTime(LocalDate Date);
 
-    List<Repair>findFirst10ByOrderByIdDesc();
+    List<Repair> findFirst10ByOrderByIdDesc();
 
     List<Repair> findByUser(User user);
 }

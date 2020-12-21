@@ -56,7 +56,7 @@ public class Repair {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Repair(){
+    public Repair() {
 
     }
 

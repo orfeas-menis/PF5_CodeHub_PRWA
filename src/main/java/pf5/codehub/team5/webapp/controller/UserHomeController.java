@@ -27,12 +27,11 @@ public class UserHomeController {
     private UserServiceImpl userService;
 
 
-
     @GetMapping(path = "/user")
     public String userHome(Model model) {
         Optional<UserModel> user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
         List<Repair> repairs = repairService.findByUserId(user.get().getId());
-        model.addAttribute(REPAIRS_LIST,repairs);
+        model.addAttribute(REPAIRS_LIST, repairs);
         return "userhome";
     }
 

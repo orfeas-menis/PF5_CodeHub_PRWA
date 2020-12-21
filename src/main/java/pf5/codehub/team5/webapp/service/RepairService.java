@@ -16,14 +16,24 @@ import java.util.Optional;
 
 public interface RepairService {
     Optional<RepairModel> findById(Long id);
+
     List<RepairModel> findAll();
+
     List<RepairModel> findFirst10();
+
     List<RepairModel> findByDateTime(String date);
+
     List<RepairModel> findTodayActiveRepairs();
+
     List<Repair> findByUser(User user);
+
     RepairModel createRepair(RepairForm repairForm);
+
     RepairModel updateRepair(RepairForm repairForm);
+
     String deleteById(Long id);
+
     List<Repair> findByUserId(Long id);
+
     List<RepairModel> findByVat(String vat);
 }

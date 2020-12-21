@@ -46,7 +46,7 @@ jQuery(function ($) {
                 streetNumber: {
                     required: true
                 },
-                postalCode:  {
+                postalCode: {
                     required: true,
                     minLength: 5,
                     maxLength: 5
@@ -69,7 +69,7 @@ jQuery(function ($) {
                     email: "This should be an email"
                 },
                 password: {
-                    required:  "Password is required.",
+                    required: "Password is required.",
                     minlength: "Password should contain at least 4 characters."
                 },
                 userRole: {
@@ -90,7 +90,7 @@ jQuery(function ($) {
                 streetNumber: {
                     required: "Street Number is required."
                 },
-                postalCode:  {
+                postalCode: {
                     required: "Postal Code is required.",
                     minLength: "Vat should be 5 digits.",
                     maxLength: "Vat should be 5 digits."

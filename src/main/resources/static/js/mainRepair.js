@@ -29,7 +29,7 @@ jQuery(function ($) {
                 streetNumber: {
                     required: true
                 },
-                postalCode:  {
+                postalCode: {
                     required: true,
                     minLength: 5,
                     maxLength: 5
@@ -65,7 +65,7 @@ jQuery(function ($) {
                 streetNumber: {
                     required: "Street Number is required."
                 },
-                postalCode:  {
+                postalCode: {
                     required: "Postal Code is required.",
                     minLength: "Vat should be 5 digits.",
                     maxLength: "Vat should be 5 digits."

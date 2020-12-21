@@ -26,13 +26,13 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
         response.addCookie(generateTimestampCookie());
 
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-            String redirectUrl = USER_HOME_PAGE_URL;
-            for (GrantedAuthority grantedAuthority: authorities) {
-                if (grantedAuthority.getAuthority().equals("ADMIN")) {
-                    redirectUrl = ADMIN_HOME_PAGE_URL;
-                }
+        String redirectUrl = USER_HOME_PAGE_URL;
+        for (GrantedAuthority grantedAuthority : authorities) {
+            if (grantedAuthority.getAuthority().equals("ADMIN")) {
+                redirectUrl = ADMIN_HOME_PAGE_URL;
             }
-            getRedirectStrategy().sendRedirect(request, response, redirectUrl);
+        }
+        getRedirectStrategy().sendRedirect(request, response, redirectUrl);
     }
 
 

@@ -48,42 +48,42 @@
     </div>
 
     <div class="mb-3">
-            <label for="category">Category</label>
-            <div class="input-group">
-                <select class="custom-select d-block w-100" id="category" name="category">
-                    <#if categories??>
-                        <#list categories as category>
-                            <option value="${category}">${category}</option>
-                        </#list>
-                    </#if>
-                </select>
-            </div>
+        <label for="category">Category</label>
+        <div class="input-group">
+            <select class="custom-select d-block w-100" id="category" name="category">
+                <#if categories??>
+                    <#list categories as category>
+                        <option value="${category}">${category}</option>
+                    </#list>
+                </#if>
+            </select>
         </div>
+    </div>
 
     <div class="mb-3">
-            <label for="status">Status</label>
-            <div class="input-group">
-                <select class="custom-select d-block w-100" id="status" name="status">
-                    <#if statuses??>
-                        <#list statuses as status>
-                            <option value="${status}">${status}</option>
-                        </#list>
-                    </#if>
-                </select>
-            </div>
+        <label for="status">Status</label>
+        <div class="input-group">
+            <select class="custom-select d-block w-100" id="status" name="status">
+                <#if statuses??>
+                    <#list statuses as status>
+                        <option value="${status}">${status}</option>
+                    </#list>
+                </#if>
+            </select>
         </div>
+    </div>
 
 
-        <div class="mb-3">
+    <div class="mb-3">
 
-           <label for="datepicker">Date</label>
-           <div class="input-group">
-                <div class="input-group-prepend">
-                        <span class="input-group-text"><span data-feather="calendar"></span></span>
-                </div>
-                    <input type="text" class="form-control" id="datepicker" name="dateTime">
-                </div>
-           </div>
+        <label for="datepicker">Date</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><span data-feather="calendar"></span></span>
+            </div>
+            <input type="text" class="form-control" id="datepicker" name="dateTime">
+        </div>
+    </div>
 
     <div class="mb-3">
         <label for="cost">Cost</label>
@@ -91,7 +91,6 @@
             <input type="text" class="form-control" id="cost" name="cost">
         </div>
     </div>
-
 
 
     <button class="btn btn-primary btn-lg mt-4" type="submit">Create</button>

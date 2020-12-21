@@ -13,17 +13,17 @@ import java.util.List;
 @SpringBootTest
 class SpringBootAppDemoApplicationTests {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(SpringBootAppDemoApplicationTests.class);
-	List<String> passwordsToBeHashed = Arrays.asList("pass123","pass456","pass789");
+    private static final Logger LOGGER = LoggerFactory.getLogger(SpringBootAppDemoApplicationTests.class);
+    List<String> passwordsToBeHashed = Arrays.asList("pass123", "pass456", "pass789");
 
-	@Autowired
-	private SecurityConfig securityConfig;
+    @Autowired
+    private SecurityConfig securityConfig;
 
-	@Test
-	public void contextLoads() {
-		passwordsToBeHashed.forEach(password ->
-				LOGGER.info("Hash value of password " + password + "is :" + securityConfig.passwordEncoder().encode(password)));
+    @Test
+    public void contextLoads() {
+        passwordsToBeHashed.forEach(password ->
+                LOGGER.info("Hash value of password " + password + "is :" + securityConfig.passwordEncoder().encode(password)));
 
-	}
+    }
 
 }

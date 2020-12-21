@@ -8,6 +8,7 @@ import org.springframework.validation.Validator;
 import pf5.codehub.team5.webapp.form.UserForm;
 import pf5.codehub.team5.webapp.model.UserModel;
 import pf5.codehub.team5.webapp.service.UserService;
+
 import java.util.Optional;
 
 @Component
@@ -35,22 +36,22 @@ public class UserCreateValidator implements Validator {
         }
         //We only accept postal codes that consist of exactly 5 digits
         String postalCodeRegex = "\\b\\d{5}\\b";
-        if (!userForm.getPostalCode().matches(postalCodeRegex)){
+        if (!userForm.getPostalCode().matches(postalCodeRegex)) {
             errors.rejectValue("postalCode", "register.postalCode.format.error");
         }
         //Phone number Regex found here: https://regexr.com/3c53v
         String phoneNumberRegex = "^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$";
-        if (!userForm.getPhoneNumber().matches(phoneNumberRegex)){
+        if (!userForm.getPhoneNumber().matches(phoneNumberRegex)) {
             errors.rejectValue("phoneNumber", "register.phoneNumber.format.error");
         }
         //Accept only numbers for streetNumber
         String streetNumberRegex = "^\\d*$";
-        if (!userForm.getStreetNumber().matches(streetNumberRegex)){
+        if (!userForm.getStreetNumber().matches(streetNumberRegex)) {
             errors.rejectValue("streetNumber", "register.streetNumber.format.error");
         }
         //We only accept VAT numbers that are consist of exactly 9 digits
         String vatRegex = "\\b\\d{9}\\b";
-        if (!userForm.getVat().matches(vatRegex)){
+        if (!userForm.getVat().matches(vatRegex)) {
             errors.rejectValue("vat", "register.vat.format.error");
         }
         // Or use reject if empty or whitespace

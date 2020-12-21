@@ -2,43 +2,41 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
+<head>
 
-        <title>Search</title>
-        <#include "partials/head.ftlh">
+    <title>Search</title>
+    <#include "partials/head.ftlh">
 
-    </head>
+</head>
 
-    <body>
+<body>
 
-         <#include "partials/navbar.ftlh">
+<#include "partials/navbar.ftlh">
 
-         <table class="table">
-                       <thead>
-                       <th>First Name</th>
-                       <th>Last name</th>
-                       <th>E-mail</th>
+<table class="table">
+    <thead>
+    <th>First Name</th>
+    <th>Last name</th>
+    <th>E-mail</th>
 
-                       </thead>
-                       <tbody>
-
-
-                               <tr>
-                                   <td>${user.firstName}</td>
-                                   <td>${user.lastName} </td>
-                                   <td>${user.email}</td>
-
-                               </tr>
+    </thead>
+    <tbody>
 
 
-                       </tbody>
-                   </table>
+    <tr>
+        <td>${user.firstName}</td>
+        <td>${user.lastName} </td>
+        <td>${user.email}</td>
+
+    </tr>
 
 
+    </tbody>
+</table>
 
-         <#include "partials/scripts.ftlh">
-    </body>
 
+<#include "partials/scripts.ftlh">
+</body>
 
 
 </html>

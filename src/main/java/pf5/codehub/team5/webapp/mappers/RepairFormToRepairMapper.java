@@ -29,7 +29,7 @@ public class RepairFormToRepairMapper {
         repair.setDescription(repairForm.getDescription());
         repair.setStatus(Status.valueOf(repairForm.getStatus()));
         repair.setCategory(Category.valueOf(repairForm.getCategory()));
-        String myCost = repairForm.getCost().replace(',','.');
+        String myCost = repairForm.getCost().replace(',', '.');
         boolean numeric = true;
         Double num = 0.0;
         try {
@@ -42,7 +42,7 @@ public class RepairFormToRepairMapper {
         }
         Optional<User> user = userRepository.findByVat(repairForm.getVat());
         if (user.isPresent()) repair.setUser(user.get());
-        if (repairForm.getId() != null){
+        if (repairForm.getId() != null) {
             repair.setId(repairForm.getId());
         }
         return repair;

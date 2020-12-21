@@ -22,7 +22,8 @@ public class RepairModel {
     private double cost;
     private String userVat;
 
-    public RepairModel(){}
+    public RepairModel() {
+    }
 
     public RepairModel(Long id, String street, String streetNumber, String postalCode, String city, String dateTime, String description, Status status, Category category, double cost, String userVat) {
         this.id = id;
