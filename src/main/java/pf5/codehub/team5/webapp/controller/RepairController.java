@@ -31,7 +31,6 @@ public class RepairController {
     private static final String CATEGORIES = "categories";
     private static final String STATUSES = "statuses";
     private static final String REPAIR = "repair";
-    private static final String VAT = "vat";
     private static final String EDIT_FORM = "editForm";
 
 
@@ -102,7 +101,6 @@ public class RepairController {
         if (optModel.isPresent()) {
             RepairModel repairModel = optModel.get();
             model.addAttribute(REPAIR, repairModel);
-            model.addAttribute(VAT, repairModel.getUserVat());
             model.addAttribute(CATEGORIES, Category.values());
             model.addAttribute(STATUSES, Status.values());
         } else {

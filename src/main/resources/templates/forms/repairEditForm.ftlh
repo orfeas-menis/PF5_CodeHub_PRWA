@@ -9,7 +9,7 @@
     <div class="mb-3">
         <label for="vat">User VAT</label>
         <div class="input-group">
-            <input type="text" class="form-control" id="vat" name="vat" value="${vat}">
+            <input type="text" class="form-control" id="vat" name="vat" value="${repair.userVat}">
         </div>
     </div>
 

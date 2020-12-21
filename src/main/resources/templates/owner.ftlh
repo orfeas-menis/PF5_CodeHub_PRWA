@@ -41,7 +41,8 @@
                                 <td>${user.lastName}</td>
                                 <td>${user.vat}</td>
                                 <td>${user.email}</td>
-                                <td class="text-center"><a class="btn btn-link" href="/admin/owner/${user.id}/edit"><span
+                                <td class="text-center"><a class="btn btn-link"
+                                                           href="/admin/owner/${user.id}/edit"><span
                                                 data-feather="tool"></span></a></td>
                                 <td class="text-center">
 

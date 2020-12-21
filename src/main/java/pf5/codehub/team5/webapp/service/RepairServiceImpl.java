@@ -16,13 +16,15 @@ import pf5.codehub.team5.webapp.repository.UserRepository;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class RepairServiceImpl implements  RepairService{
+public class RepairServiceImpl implements RepairService {
 
     @Autowired
     private RepairRepository repairRepository;
@@ -49,16 +51,12 @@ public class RepairServiceImpl implements  RepairService{
                     .map(repair -> repairModelMapper.map(repair))
                     .collect(Collectors.toList());
         } else {
-            return repairRepository
-                    .findByUser(user.get())
-                    .stream()
-                    .map(repair -> repairModelMapper.map(repair))
-                    .collect(Collectors.toList());
+            return new ArrayList<RepairModel>();
         }
     }
 
     @Override
-    public Optional<RepairModel> findById(Long id){
+    public Optional<RepairModel> findById(Long id) {
         return repairRepository
                 .findById(id)
                 .map(repair -> repairModelMapper.map(repair));
@@ -75,15 +73,19 @@ public class RepairServiceImpl implements  RepairService{
 
     @Override
     public List<RepairModel> findByDateTime(String date) {
-        return repairRepository
-                .findByDateTime(LocalDate.parse(date))
-                .stream()
-                .map(repair -> repairModelMapper.map(repair))
-                .collect(Collectors.toList());
+        try {
+            return repairRepository
+                    .findByDateTime(LocalDate.parse(date))
+                    .stream()
+                    .map(repair -> repairModelMapper.map(repair))
+                    .collect(Collectors.toList());
+        } catch (DateTimeParseException e) {
+            return new ArrayList<RepairModel>();
+        }
     }
 
     @Override
-    public List<RepairModel> findTodayActiveRepairs(){
+    public List<RepairModel> findTodayActiveRepairs() {
         return repairRepository
                 .findByDateTime(LocalDate.now())
                 .stream()
@@ -93,17 +95,16 @@ public class RepairServiceImpl implements  RepairService{
     }
 
     @Override
-    public List<Repair> findByUser(User user){
+    public List<Repair> findByUser(User user) {
         return repairRepository.findByUser(user);
     }
 
     @Override
-    public List<Repair> findByUserId(Long id){
+    public List<Repair> findByUserId(Long id) {
         Optional<User> optUser = userRepository.findById(id);
-        if (optUser.isPresent()){
+        if (optUser.isPresent()) {
             return repairRepository.findByUser(optUser.get());
-        }
-        else{
+        } else {
             //Through Exception if the user does not exist
             return repairRepository.findByUser(optUser.get());
         }
@@ -127,7 +128,7 @@ public class RepairServiceImpl implements  RepairService{
     }
 
     @Override
-    public RepairModel updateRepair(RepairForm repairForm){
+    public RepairModel updateRepair(RepairForm repairForm) {
         Repair repair = repairMapper.map(repairForm);
         Repair newRepair = repairRepository.save(repair);
         return repairModelMapper.map(newRepair);
@@ -139,8 +140,7 @@ public class RepairServiceImpl implements  RepairService{
         if (repair.isPresent()) {
             repairRepository.deleteById(id);
             return "OK";
-        }
-        else{
+        } else {
             return "User does not exist";
         }
     }
