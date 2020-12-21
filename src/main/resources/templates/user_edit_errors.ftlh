@@ -17,7 +17,7 @@
         <main role="main" class="ml-sm-auto col-lg-12 pt-3 px-4">
             <div class="row">
                 <div class="col-md-12 order-md-1">
-                    <#include "forms/userEditForm.ftlh">
+                    <#include "forms/userEditFormErrors.ftlh">
                 </div>
             </div>
         </main>

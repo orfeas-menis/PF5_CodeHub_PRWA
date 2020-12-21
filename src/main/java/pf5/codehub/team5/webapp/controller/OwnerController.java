@@ -89,6 +89,7 @@ public class OwnerController {
         if (optModel.isPresent()) {
             UserModel userModel = optModel.get();
             model.addAttribute(USER, userModel);
+            model.addAttribute(EDIT_FORM, new UserForm());
             model.addAttribute(USER_ROLES, UserRole.values());
             model.addAttribute(PROPERTY_TYPES, PropertyType.values());
         } else {
@@ -107,7 +108,10 @@ public class OwnerController {
             //have some error handling here, perhaps add extra error messages to the model
             model.addAttribute(ERROR_MESSAGE, "validation errors occurred");
             if (userForm.getId() != null) {
-                return "redirect:/admin/owner/" + userForm.getId().toString() + "/edit";
+//                return "redirect:/admin/owner/" + userForm.getId().toString() + "/edit";
+                model.addAttribute(USER_ROLES, UserRole.values());
+                model.addAttribute(PROPERTY_TYPES, PropertyType.values());
+                return "user_edit_errors";
             } else {
                 return "redirect:/admin/owner";
             }
