@@ -10,15 +10,12 @@ import pf5.codehub.team5.webapp.mappers.RepairFormToRepairMapper;
 import pf5.codehub.team5.webapp.mappers.RepairToRepairFormMapper;
 import pf5.codehub.team5.webapp.mappers.RepairToRepairModelMapper;
 import pf5.codehub.team5.webapp.model.RepairModel;
-import pf5.codehub.team5.webapp.model.UserModel;
 import pf5.codehub.team5.webapp.repository.RepairRepository;
 import pf5.codehub.team5.webapp.repository.UserRepository;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -113,9 +110,16 @@ public class RepairServiceImpl implements RepairService {
 
     @Override
     public RepairModel createRepair(RepairForm repairForm) {
-        Repair repair = repairMapper.map(repairForm);
-        Repair newRepair = repairRepository.save(repair);
-        return repairModelMapper.map(newRepair);
+        Optional<User> opt = userRepository.findByVat(repairForm.getVat());
+        if (opt.isPresent()){
+            Repair repair = repairMapper.map(repairForm);
+            Repair newRepair = repairRepository.save(repair);
+            return repairModelMapper.map(newRepair);
+        }
+        else{
+            return new RepairModel();
+        }
+
     }
 
     @Override

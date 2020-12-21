@@ -16,6 +16,8 @@ import pf5.codehub.team5.webapp.form.UserForm;
 import pf5.codehub.team5.webapp.model.RepairModel;
 import pf5.codehub.team5.webapp.model.UserModel;
 import pf5.codehub.team5.webapp.service.RepairService;
+import pf5.codehub.team5.webapp.validators.RepairCreateValidator;
+import pf5.codehub.team5.webapp.validators.RepairEditValidator;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -37,6 +39,12 @@ public class RepairController {
     @Autowired
     private RepairService repairService;
 
+    @Autowired
+    private RepairCreateValidator repairCreateValidator;
+
+    @Autowired
+    private RepairEditValidator repairEditValidator;
+
     @PostMapping(path = "/admin/repair/search-vat")
     public String searchPostVat(Model model, @RequestParam String parameter) {
         List<RepairModel> repairs = repairService.findByVat(parameter);
@@ -55,15 +63,15 @@ public class RepairController {
         return "repair";
     }
 
-//        @InitBinder(REPAIR_FORM)
-//    protected void initBinder(final WebDataBinder binder) {
-//        binder.addValidators(repairCreateValidator);
-//    }
+    @InitBinder(REPAIR_FORM)
+    protected void initBinder(final WebDataBinder binder) {
+        binder.addValidators(repairCreateValidator);
+    }
 
-//    @InitBinder(EDIT_FORM)
-//    protected void initBinderEdit(final WebDataBinder binder) {
-//        binder.addValidators(repairEditValidator);
-//    }
+    @InitBinder(EDIT_FORM)
+    protected void initBinderEdit(final WebDataBinder binder) {
+        binder.addValidators(repairEditValidator);
+    }
 
     @GetMapping(path = "/admin/repair")
     public String repairHome(Model model) {

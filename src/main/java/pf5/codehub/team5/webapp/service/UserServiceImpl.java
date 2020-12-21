@@ -120,12 +120,10 @@ public class UserServiceImpl implements UserService {
             if (repairRepository.findByUser(user.get()).isEmpty()) {
                 userRepository.deleteById(id);
                 return "OK";
-            }
-            else{
+            } else {
                 return "User has repairs";
             }
-        }
-        else{
+        } else {
             return "User does not exist";
         }
     }
