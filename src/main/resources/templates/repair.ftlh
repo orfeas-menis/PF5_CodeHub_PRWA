@@ -1,7 +1,7 @@
 <#import "/spring.ftl" as spring />
 <html>
 <head>
-    <title>Users</title>
+    <title>Repairs</title>
     <#include "partials/head.ftlh">
 </head>
 <body>
@@ -87,7 +87,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">User</h5>
+                                <h5 class="modal-title">Repair</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
