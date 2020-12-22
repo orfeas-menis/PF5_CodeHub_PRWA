@@ -26,11 +26,11 @@ public class UserCreateValidator implements Validator {
     public void validate(Object target, Errors errors) {
         UserForm userForm = (UserForm) target;
         //Check if already exists user with the provided email or VAT
-        Optional<UserModel> usersWithGivenEmail = userService.findByEmail(userForm.getEmail());
+        Optional<UserModel> usersWithGivenEmail = userService.findByEmail(userForm.getEmail().trim());
         if (usersWithGivenEmail.isPresent()) {
             errors.rejectValue("email", "register.email.taken.error");
         }
-        Optional<UserModel> usersWithGivenVat = userService.findByVat(userForm.getVat());
+        Optional<UserModel> usersWithGivenVat = userService.findByVat(userForm.getVat().trim());
         if (usersWithGivenVat.isPresent()) {
             errors.rejectValue("vat", "register.vat.taken.error");
         }
