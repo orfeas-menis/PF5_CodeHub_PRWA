@@ -44,11 +44,6 @@ public class UserCreateValidator implements Validator {
         if (!userForm.getPhoneNumber().matches(phoneNumberRegex)) {
             errors.rejectValue("phoneNumber", "register.phoneNumber.format.error");
         }
-        //Accept only numbers for streetNumber
-        String streetNumberRegex = "^\\d*$";
-        if (!userForm.getStreetNumber().matches(streetNumberRegex)) {
-            errors.rejectValue("streetNumber", "register.streetNumber.format.error");
-        }
         //We only accept VAT numbers that are consist of exactly 9 digits
         String vatRegex = "\\b\\d{9}\\b";
         if (!userForm.getVat().matches(vatRegex)) {

@@ -47,7 +47,7 @@
                     <div class="form-group">
                         <label for="password">Password</label>
                         <@spring.bind "createForm.password"/>
-                        <input type="text" class="form-control" id="password" name="password" value="${createForm.password!''}">
+                        <input type="password" class="form-control" id="password" name="password" value="${createForm.password!''}">
                         <#if spring.status.error>
                             <ul>
                                 <#list spring.status.errorMessages as error>
